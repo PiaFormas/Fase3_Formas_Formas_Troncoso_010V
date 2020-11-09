@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Productos</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"> 
+        <link href="estilo1.css" rel="stylesheet">
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="js/funciones1.js"></script>
+        <script src="https://kit.fontawesome.com/5bca04f22b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="row cabecera">
+
+            <div class="col-2">
+                <img class="logo" src="img/logoantojo.png" alt="logo">
+            </div>
+            <div class="col-5">
+                <h1>Lo que buscas ante tus ojos...</h1>
+                <div class="form-group1"> 
+                    <label for="Dirección:">Dirección:</label>
+                    <input type="text" class="form-control" id="nombre">
+                </div> 
+            </div>
+            <div class="col-3">
+                <div class="form-group2">
+                    <select name="Comuna" class="combo">
+                        <option>Cerrillos</option><option>Cerro Navia</option><option>Conchalí</option> 
+                        <option>El Bosque</option><option>Estación Central</option><option>Huechuraba</option> 
+                        <option>Independencia</option><option>La Cisterna</option> <option>La Florida</option> 
+                        <option>La Granja</option> <option>La Pintana</option> <option>La Reina</option> 
+                        <option>Las Condes</option> <option>Lo Barnechea</option> <option>Lo Espejo</option> 
+                        <option>Lo Prado</option> <option>Macul</option> <option>Maipú</option> 
+                        <option>Ñuñoa</option> <option>Pedro Aguirre Cerda</option> <option>Peñalolén</option> 
+                        <option>Providencia</option> <option>Pudahuel</option> <option>Quilicura</option>
+                        <option>Quinta Normal</option><option>Recoleta</option><option>Renca</option>
+                        <option>San Joaquín</option><option>San Miguel</option><option>San Ramón</option>
+                        <option>Santiago</option><option>Vitacura</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary"><a href="Productos.html">Buscar</a></button>
+
+                </div> 
+            </div>
+            <div class="col-2">
+                <a href="javascript:inicio()"><img class="user" src="img/user.png" alt="icono-usuario"></a>
+                <h5>Inicia sesión</h5> 
+                <button type="submit" class="btn btn-register"><a href="Registrarse.html">Regístrate</a></button>
+            </div>
+        </div> 
+
+        <div class="row cuerpo1">
+            <div class="col-3">
+              <h5>Categorías</h5> 
+            </div>
+            <div class="col-9">
+              <h5>Hay 13 antojos en tu sector</h5>
+            </div>
+        </div>
+
+        <div class="row cuerpo2">
+            <div class="col-2"  style="background-color:#AEDFDB">
+              <ul>
+                <li id="cat1">Pasteles y tortas</li>
+                  <ul id="lista1" style="display:none">
+                    <li><a href="">Tortas</a></li>
+                    <li><a href="">Kuchen</a></li>
+                    <li><a href="">Pie</a></li>
+                  </ul>
+                <hr>
+                <li id="cat2">Galletas y bollería</li>
+                  <ul id="lista2" style="display:none">
+                    <li><a href="">Galletas</a></li>
+                    <li><a href="">Muffins</a></li>
+                    <li><a href="">Cupcakes</a></li>
+                    <li><a href="">Donas</a></li>
+                  </ul>
+                <hr>
+                <li id="cat3">Bombones y chocolates</li>
+                  <ul id="lista3" style="display:none">
+                    <li><a href="">Bombones rellenos</a></li>
+                    <li><a href="">Chocolates de leche</a></li>
+                    <li><a href="">Chocolate Amargo</a></li>
+                    <li><a href="">Chocolate con frutos secos</a></li>
+                  </ul>
+                <hr>
+                <li id="cat4">Pizzas y sandwiches</li>
+                  <ul id="lista4" style="display:none">
+                    <li><a href="">Pizzas</a></li>
+                    <li><a href="">Hot Dogs</a></li>
+                    <li><a href="">Hamburguesas</a></li>
+                    <li><a href="">Ass</a></li>
+                  </ul>
+                <hr>
+                <li id="cat5">Frituras</li>
+                  <ul id="lista5" style="display:none">
+                    <li><a href="">Sopaipillas</a></li>
+                    <li><a href="">Churros</a></li>
+                    <li><a href="">Papas Fritas</a></li>
+                    <li><a href="">Empanadas</a></li>
+                  </ul>
+                <hr>
+                <li id="cat6">Comida oriental</li>
+                  <ul id="lista6" style="display:none">
+                    <li><a href="">Comida China</a></li>
+                    <li><a href="">Sushi</a></li>
+                    <li><a href="">Thai</a></li>
+                  </ul>
+              </ul>   
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <img class="card-img-top" src="img/bombones-de-trufa-y-avellana.jpg" alt="img producto">            
+                    <div class="card-body">
+                      <h4 class="card-title">Bombones caseros</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
+                                            tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
+                                            nec tortor sit amet, maximus mattis dui. </p>
+                      <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                  </div>          
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <img class="card-img-top" src="img/kuchen.jpg" alt="img producto">            
+                    <div class="card-body">
+                      <h4 class="card-title">Kuchen de frutas</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
+                                            tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
+                                            nec tortor sit amet, maximus mattis dui. </p>
+                      <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                  </div>          
+            </div>
+        </div>
+
+        <div class="row cuerpo3">
+            <div class="col-2">  
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <img class="card-img-top" src="img/pie-de-limon-casero.jpg" alt="img producto">            
+                    <div class="card-body">
+                      <h4 class="card-title">Pie de Limón</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
+                                            tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
+                                            nec tortor sit amet, maximus mattis dui. </p>
+                      <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                  </div>          
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <img class="card-img-top" src="img/panqueques.jpg" alt="img producto">            
+                    <div class="card-body">
+                      <h4 class="card-title">Panqueques rellenos</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
+                                            tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
+                                            nec tortor sit amet, maximus mattis dui. </p>
+                      <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                  </div>          
+            </div>
+        </div>
+
+        <div class="row cuerpo4">
+            <div class="col-2"> 
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <img class="card-img-top" src="img/postres-caseros-faciles.jpg" alt="img producto">            
+                    <div class="card-body">
+                      <h4 class="card-title">Postre de leche</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
+                                            tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
+                                            nec tortor sit amet, maximus mattis dui. </p>
+                      <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                  </div>          
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <img class="card-img-top" src="img/dulces-caseros.jpg" alt="img producto">            
+                    <div class="card-body">
+                      <h4 class="card-title">Dulces caseros</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lectus sem, 
+                                            tempor vitae mattis malesuada, ornare sed erat. Pellentesque nulla dui, congue
+                                            nec tortor sit amet, maximus mattis dui. </p>
+                      <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                  </div>          
+            </div>
+        </div>
+
+        <div class="overlay">
+          <div class="inicio-sesion" id="inic">
+             
+            <img class="logoini" src="img/logoantojo.png" alt="img producto">
+            <h5><b>Inicia sesión</b></h5>
+            <form>
+              <div class="contenedor-inputs">
+                <p class="nom">Usuario:<input  type="text" name="nombre" size="18" required></p>
+                <p class="pass">Contraseña: <input type="password" name="contraseña" size="18" required></p>
+              </div>
+              <input type="submit" class="btn-submit" value="Enviar">
+            </form>
+            <a href="javascript:cerrar()" id="cerrar" class="btn-cerrar-popup">X</a>
+          </div>
+        </div>
+
+        <script>
+          function inicio()
+          {
+            document.getElementById("inic").style.display="block";
+          }
+      
+          function cerrar()
+          {
+          document.getElementById("inic").style.display="none";
+          }
+        </script>
+
+        <footer class="site-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <h6>Acerca de</h6>
+                <p class="text-justify">antojo.com es un grupo de personas emprendedoras que quieren marcar una diferencia y vender sus productos caseros con un sello único y de calidad, dentro de una comunidad confiable y cercana.</p>
+              </div>
+    
+              <div class="col-xs-6 col-md-3">
+                <h6>Links rápidos</h6>
+                <ul class="footer-links">
+                  <li><a href="">Nosotros</a></li>
+                  <li><a href="">Contáctanos</a></li>
+                  <li><a href="">Sé parte de nosotros</a></li>
+                  <li><a href="">Términos y condiciones</a></li>
+                  <li><a href="">Mapa del  sitio</a></li>
+                 
+                </ul>
+              </div>
+    
+              <div class="col-xs-6 col-md-3">
+                <h6>Síguenos en</h6>
+                <ul class="footer-links">
+                  <li><a class="facebook" href="https://www.facebook.com/antojouhlala"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+                  <li><a class="twitter" href="https://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a></li>
+                 
+                  <li><a class="youtube" href="https://www.youtube.com"><i class="fa fa-youtube"></i> Youtube</a></li>
+                
+                </ul>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+             <a href="#">Antojo</a>.
+                </p>
+              </div>
+    
+    
+            </div>
+          </div>
+    </footer>
+    </body>
+</html>

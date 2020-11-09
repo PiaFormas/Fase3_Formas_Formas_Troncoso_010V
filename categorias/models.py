@@ -43,7 +43,6 @@ class Comprador(models.Model):
     )
         
         
-
     #Atributos
     id_comprador = models.AutoField(primary_key=True, help_text="ID Comprador")
     nombre_comprador = models.TextField(max_length=30, help_text="Nombre Comprador")
@@ -59,8 +58,7 @@ class Comprador(models.Model):
     def __str__(self): 
          return self.nombre_comprador
     def tostring(self):
-         cadena=self.id_comprador+" "+self.apellido_comprador+" "+self.nombre_comprador+" "+self.fono_comprador+" "+self.dir_comprador+" "
-         +self.comuna_comprador+" "+self.email_comprador+" "+self.pass_comprador
+         cadena=self.id_comprador+" "+self.apellido_comprador+" "+self.nombre_comprador+" "+self.fono_comprador+" "+self.dir_comprador+" "+self.comuna_comprador+" "+self.email_comprador+" "+self.pass_comprador
          return cadena
     
 class Vendedor(models.Model):
@@ -118,10 +116,10 @@ class Vendedor(models.Model):
     #Retorna el nombre completo.
     def __str__(self): 
         return self.nombre_vendedor
-    def tostring(self):
-        cadena=self. id_vendedor+" "+self.apellido_vendedor+" "+self.nombre_vendedor+" "+self.fono_vendedor+" "+self.dir_vendedor
-        +" "+self.com_vendedor+" "+ self.email_vendedor+" "+self.pass_vendedor
-        return cadena
+   # def tostring(self):
+      #  cadena=self. id_vendedor+" "+self.apellido_vendedor+" "+self.nombre_vendedor+" "+self.fono_vendedor+" "+self.dir_vendedor
+      #  +" "+self.com_vendedor+" "+ self.email_vendedor+" "+self.pass_vendedor
+       # return cadena
 
 class DetalleCompra(models.Model):
     #Atributos
@@ -179,10 +177,10 @@ class Producto(models.Model):
     def __str__(self): 
         return self.nombre_producto
     
-    def tostring(self):
-        cadena=self. id_producto+" "+self.nombre_producto+" "+self.precio_producto+" "+self.descripcion_producto+" "+self.unidad_medida
-        +" "+self.categoria+" "+ self.imagen
-        return cadena
+    #def tostring(self):
+      #  cadena=self. id_producto+" "+self.nombre_producto+" "+self.precio_producto+" "+self.descripcion_producto+" "
+       # +self.categoria+" "+ self.imagen
+       # return cadena
 
 class Tarjeta(models.Model):
     BANCO = (
@@ -217,8 +215,8 @@ class Tarjeta(models.Model):
     )
     
     #Métodos
-    def __str__(self): 
-        return self.nro_tarjeta
+    #def __str__(self): 
+       # return self.id_tarjeta
     #def tostring(self):
        # cadena=self. id_tarjeta+" "+self.nro_tarjeta+" "+self.nombre_titular+" "+self.banco+" "+self.mes_vencimiento
        # +" "+self.anno_vencimiento
@@ -274,6 +272,3 @@ class CuentaBanco(models.Model):
        # +" "+self.email_titular+" "+ self.rut_titular
         #return cadena
 
-
- 
-   
