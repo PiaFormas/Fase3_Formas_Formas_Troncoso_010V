@@ -1,61 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>Inicio</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"> 
-        <link href="estilo.css" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/5bca04f22b.js" crossorigin="anonymous"></script>
+{% extends "base_generic.html" %}
 
-    </head>
-    <body>
-      <div class="row cabecera">
-
-        <div class="col-2">
-            <img class="logo" src="img/logoantojo.png" alt="logoantojo">
-        </div>
-        <div class="col-5">
-            <h1>Lo que buscas ante tus ojos...</h1>
-            <div class="form-group1"> 
-                <label for="Direccion">Dirección:</label>
-                <input type="text" class="form-control" id="Direccion">
-            </div> 
-        </div>
-        <div class="col-3">
-            <div class="form-group2">
-                <select name="Comuna" class="combo">
-                    <option>Cerrillos</option><option>Cerro Navia</option><option>Conchalí</option> 
-                    <option>El Bosque</option><option>Estación Central</option><option>Huechuraba</option> 
-                    <option>Independencia</option><option>La Cisterna</option> <option>La Florida</option> 
-                    <option>La Granja</option> <option>La Pintana</option> <option>La Reina</option> 
-                    <option>Las Condes</option> <option>Lo Barnechea</option> <option>Lo Espejo</option> 
-                    <option>Lo Prado</option> <option>Macul</option> <option>Maipú</option> 
-                    <option>Ñuñoa</option> <option>Pedro Aguirre Cerda</option> <option>Peñalolén</option> 
-                    <option>Providencia</option> <option>Pudahuel</option> <option>Quilicura</option>
-                    <option>Quinta Normal</option><option>Recoleta</option><option>Renca</option>
-                    <option>San Joaquín</option><option>San Miguel</option><option>San Ramón</option>
-                    <option>Santiago</option><option>Vitacura</option>
-                </select>
-                <button type="submit" class="btn btn-primary"><a href="Productos.html">Buscar</a></button>
-
-            </div> 
-        </div>
-        <div class="col-2">
-            <a href="javascript:inicio()"><img class="user" src="img/user.png" alt="usuario"></a>
-            <h5>Inicia sesión</h5> 
-            <button type="submit" class="btn btn-register"><a href="Registrarse.html">Regístrate</a></button>
-        </div>
-    </div> 
-
-    <div class="row cuerpo1">
-     <img class="pasos" src="img/pasos.png" alt="pasosCompra">
+{% block content %}
+  {% load static %}
+  
+  
+  
+  <div class="row cuerpo1">
+     
+     
+     <img class="pasos" src="{% static 'img/pasos.png' %}" alt="pasosCompra">
+     <div class="row cabecera" style="background-image: url({% static 'img/Panaderia1.jpg' %})"></div>
     </div>
     
     <div class="overlay">
+      
       <div class="inicio-sesion" id="inic">
          
-        <img class="logoini" src="img/logoantojo.png" alt="logo">
+        <img class="logoini" src="{% static 'img/logoantojo.png' %}" alt="logo">
         <h5><b>Inicia sesión</b></h5>
         <form action="#">
           <div class="contenedor-inputs">
@@ -91,19 +52,19 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/slide1.jpg" class="d-block w-100" alt="...">
+            <img src="{% static 'img/slide1.jpg' %}" class="d-block w-100" alt="...">
           
           </div>
           <div class="carousel-item">
-            <img src="img/slide2.jpg" class="d-block w-100" alt="...">
+            <img src="{% static 'img/slide2.jpg' %}" class="d-block w-100" alt="...">
           
           </div>
           <div class="carousel-item">
-            <img src="img/slide3.jpg" class="d-block w-100" alt="...">
+            <img src="{% static 'img/slide3.jpg' %}" class="d-block w-100" alt="...">
            
           </div>
           <div class="carousel-item">
-            <img src="img/slide4.jpg" class="d-block w-100" alt="...">
+            <img src="{% static 'img/slide4.jpg' %}" class="d-block w-100" alt="...">
            
           </div>
          
@@ -117,66 +78,5 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-      <script src="js/bootstrap.min.js" ></script>
-      
-      <p>cantidad de vendedores y compradores:</p>
-      <ul>
-          <li><strong>Compradores:</strong> {{ num_compradores }}</li>
-          <li><strong>Vendedores:</strong> {{ num_vendedores }}</li>
-          <li><strong>Tarjetas:</strong> {{ num_tarjetas }}</li>
-          <li><strong>Productos:</strong> {{ num_productos }}</li>
-      </ul>
 
-    
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <h6>Acerca de</h6>
-            <p class="text-justify">antojo.com es un grupo de personas emprendedoras que quieren marcar una diferencia y vender sus productos caseros con un sello único y de calidad, dentro de una comunidad confiable y cercana.</p>
-          </div>
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Links rápidos</h6>
-            <ul class="footer-links">
-              <li><a href="">Nosotros</a></li>
-              <li><a href="">Contáctanos</a></li>
-              <li><a href="">Sé parte de nosotros</a></li>
-              <li><a href="">Términos y condiciones</a></li>
-              <li><a href="">Mapa del  sitio</a></li>
-             
-            </ul>
-          </div>
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Síguenos en</h6>
-            <ul class="footer-links">
-              <li><a class="facebook" href="https://www.facebook.com/antojouhlala"><i class="fab fa-facebook-square"></i> Facebook</a></li>
-              <li><a class="twitter" href="https://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a></li>
-             
-              <li><a class="youtube" href="https://www.youtube.com"><i class="fa fa-youtube"></i> Youtube</a></li>
-            
-            </ul>
-          </div>
-        </div>
-        <hr>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
-         <a href="#">Antojo</a>.
-            </p>
-          </div>
-
-        
-        </div>
-      </div>
-</footer>
-
-
-
-    </body>
-</html>
+{% endblock %}
