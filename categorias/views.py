@@ -22,9 +22,9 @@ def Registrarse(request):
 def RegistrarseComprador(request):
     return render(
         request,
-        'RegistrarseComprador',)
+        'RegistrarseComprador.html',)
 
 def RegistrarseVendedor(request):
     return render(
         request,
-        'RegistrarseVendedor',)
+        'RegistrarseVendedor.html',)

@@ -1,3 +1,6 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -63,9 +66,18 @@
             <a href="javascript:cerrar()" id="cerrar" class="btn-cerrar-popup">X</a>
           </div>
         </div>
-      
+        {% block content %}
         <div class="row cuerpo2">
+            <style>
+            .cuerpo2
+            {
+             margin-top:10px;
+             margin-bottom: 10px;
+             background-image: url('/static/img/images\ 24.jpg');
+             opacity: 90%;
 
+            }
+            </style>
          
                   <div class="col-6">
                     <div class="titulo">
@@ -154,7 +166,7 @@
                                                   
                                                   
                                                   <p>
-                                                      <h1> Ingrese los datos de Tarjeta</h1>
+                                                      <h5> Ingrese los datos de Tarjeta</h5>
 
                                                   </p>
                                                     <label for="ntarjeta">
@@ -199,7 +211,7 @@
                                                     <input type="text" id="rut" name="rut" size="27"> 
                                                          <br>
                                                          <br>
-                                                         <br>
+                                                         
 
 
 
@@ -278,7 +290,7 @@
           </script>  
         </div> 
         
-
+        {% endblock %}
                     
       
      <footer class="site-footer">

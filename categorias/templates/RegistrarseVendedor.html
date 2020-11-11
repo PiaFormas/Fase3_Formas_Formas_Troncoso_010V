@@ -1,3 +1,5 @@
+{% extends "base_generic.html" %}
+{% load static %}
 <!DOCTYPE html>
 
 <html lang="es">
@@ -11,7 +13,7 @@
     </head>
     <body>
         <div class="row cabecera">
-
+         
             <div class="col-2">
                 <img class="logo" src="img/logoantojo.png" alt="logo1">
             </div>
@@ -63,9 +65,19 @@
             <a href="javascript:cerrar()" id="cerrar" class="btn-cerrar-popup">X</a>
           </div>
         </div>
-      
+        {% block content %}
         <div class="row cuerpo2">
+          
+          <style>
+          .cuerpo2
+          {
+             margin-top:10px;
+             margin-bottom: 10px;
+             background-image: url('/static/img/images\ 21.jpeg');
+             opacity: 90%;
 
+          }
+          </style>
          
                   <div class="col-6">
                     <div class="titulo">
@@ -160,7 +172,7 @@
                                                   
                                                   
                                                   <p>
-                                                      <h1> Ingrese su cuenta bancaria</h1>
+                                                      <h5> Ingrese su cuenta bancaria</h5>
 
                                                   </p>
                                                     <label for="ncuenta">
@@ -197,6 +209,7 @@
                                                     <span>Rut Titular:</span>
                                                     </label>
                                                     <input type="text" id="rut" name="rut" size="27"> 
+                                                         <br>
                                                          <br>
 
 
@@ -277,7 +290,7 @@
           </script>  
         </div> 
         
-
+        {% endblock %}
                     
       
      <footer class="site-footer">

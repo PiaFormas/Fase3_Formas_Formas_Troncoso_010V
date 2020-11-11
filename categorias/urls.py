@@ -6,8 +6,8 @@ urlpatterns = [
     path('InicioVendedor/',InicioVendedor,name='InicioVendedor'),
     path('Productos/',Productos,name='Productos'),
     path('Registrarse/',Registrarse,name='Registrarse'),
-    path('RegistrarseComprador/',RegistrarseComprador,name='RegistrarseComprador'),
-    path('RegistrarseVendedor/',RegistrarseVendedor,name='RegistrarseVendedor'),
+    path('RegistrarseComprador/',RegistrarseComprador,name="RegistrarseComprador"),
+    path('RegistrarseVendedor/',RegistrarseVendedor,name="RegistrarseVendedor"),
     
 
 ]
