@@ -1,72 +1,9 @@
 {% extends "base_generic.html" %}
 {% load static %}
 
-<!DOCTYPE html>
 
-<html lang="es">
-    <head>
-        <title>Registro</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"> 
-        <link href="estilo4.css" rel="stylesheet">
-        
-    </head>
-    <body>
-        <div class="row cabecera">
-
-            <div class="col-2">
-                <img class="logo" src="img/logoantojo.png" alt="logo1">
-            </div>
-            <div class="col-5">
-                <h1>Lo que buscas ante tus ojos...</h1> 
-                <div class="form-group1"> 
-                    <label for="Direccion">Dirección:</label>
-                    <input type="text" class="form-control" id="direccion1">
-                </div> 
-            </div>
-            <div class="col-3">
-                <div class="form-group2">
-                    <select name="Comuna" class="combo">
-                        <option>Cerrillos</option><option>Cerro Navia</option><option>Conchalí</option> 
-                        <option>El Bosque</option><option>Estación Central</option><option>Huechuraba</option> 
-                        <option>Independencia</option><option>La Cisterna</option> <option>La Florida</option> 
-                        <option>La Granja</option> <option>La Pintana</option> <option>La Reina</option> 
-                        <option>Las Condes</option> <option>Lo Barnechea</option> <option>Lo Espejo</option> 
-                        <option>Lo Prado</option> <option>Macul</option> <option>Maipú</option> 
-                        <option>Ñuñoa</option> <option>Pedro Aguirre Cerda</option> <option>Peñalolén</option> 
-                        <option>Providencia</option> <option>Pudahuel</option> <option>Quilicura</option>
-                        <option>Quinta Normal</option><option>Recoleta</option><option>Renca</option>
-                        <option>San Joaquín</option><option>San Miguel</option><option>San Ramón</option>
-                        <option>Santiago</option><option>Vitacura</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary"><a href="Productos.html">Buscar</a></button>
-
-                </div> 
-            </div>
-            <div class="col-2">
-                <a href="javascript:inicio()"><img class="user" src="img/user.png" alt="user1"></a>
-                <h5>Inicia sesión</h5>
-            </div>
-        </div> 
-        
-        
-        <div class="overlay">
-          <div class="inicio-sesion" id="inic">
-             
-            <img class="logoini" src="img/logoantojo.png" alt="logo2">
-            <h5><b>Inicia sesión</b></h5>
-            <form action="1">
-              <div class="contenedor-inputs">
-                <p class="nom">Usuario:<input  type="text" name="nombre" size="18" required></p>
-                <p class="pass">Contraseña: <input type="password" name="contraseña" size="18" required></p>
-              </div>
-              <input type="submit" class="btn-submit" value="Enviar">
-            </form>
-            <a href="javascript:cerrar()" id="cerrar" class="btn-cerrar-popup">X</a>
-          </div>
-        </div>
         {% block content %}
+
         <div class="row cuerpo2">
             <style>
             .cuerpo2
@@ -90,135 +27,17 @@
                     <h1>"Regístrate Aquí"</h1>
                     <h5>Sé parte de nuestra comunidad</h5><br> 
                                  
-                                                    <script>
-                                                      function comprobarClave(){
-                                                      clave1 = document.datos.clave1.value
-                                                      clave2 = document.datos.clave2.value
-          
-                                                      if (clave1 == clave2 && clave1!="" && clave2!="")
-                                                              alert("¡Gracias por Registrarse!")
-                                                      else 
-                                                          if(clave1 != clave2)
-                                                              alert("Las claves no coinciden")
-                          
-                                                          else
-                                                              if(clave1==""||clave2=="")
-                                                              alert("Debe ingresar una clave")
-                          
-                                                      }
-                                                     </script>
+                                              {% load crispy_forms_tags %}
                                              <form name="datos" action="2" onsubmit="return validarFormulario()">
-                                                <label for="nombre">
-                                                 <span>Nombre:</span>
-                                                </label>
-                                                <input type="text" id="nombre" name="nombre" size="30">
-                                              
-                                                       <br>
-                                                    <label for="apellido">
-                                                 <span>Apellido:</span>
-                                                </label>
-                                                <input type="text" id="apellido" name="apellido" size="30">
-                                                   
-                                                       <br>
-                                                      
-                                                       <label for="telefono">
-                                                    <span>Telefono:</span>
-                                                   </label>
-                                                   <input type="tel" id="telefono" name="telefono" size="30">
-                                                      
-                                                          <br>
-                                                    <label for="direccion">
-                                                 <span>Dirección:</span>
-                                                </label>
-                                                <input type="text" id="direccion" name="direccion" size="29">
-                                                   
-                                                       <br>
-                                      
+                                                        <br>
+                                                        <br>
+                                                       {{ form | crispy }}
+                                                
                                                        
-                                                    <label for="correo">
-                                                 <span>Correo electrónico:</span>
-                                                </label>
-                                                <input type="email" id="correo" name="correo" >
-                                                       
-                                                       <br>
-                                                    
-                                                    <label for="nombre">
-                                                 <span>Usuario:</span>
-                                                </label>
-                                                <input type="text" id="usuario" name="user" size="31">
-                                                        
-                                                       <br>
-                                                    
-                                                    <label for="contrasena">
-                                                 <span>Contraseña:</span>
-                                                </label>
-                                                <input type="password" name="clave1" pattern=".{6,}" size="28">
-                                                       
-                                                       <br>
-                                                    
-                                                    <label for="contrasena2">
-                                                 <span>Repetir Contraseña:</span>
-                                                </label>
-                                                <input type="password" name="clave2" pattern=".{6,}" size="20">
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                  
-                                                  
-                                                  <p>
-                                                      <h5> Ingrese los datos de Tarjeta</h5>
-
-                                                  </p>
-                                                    <label for="ntarjeta">
-                                                  <span>Número de Tarjeta:</span>
-                                                   </label>
-                                                   <input type="text" id="ntarjeta" name="ntarjeta" size="18">
-                                                        <br>
-
-                                                    <label for="nomtitular">
-                                                  <span>Nombre titular:</span>
-                                                  </label>
-                                                  <input type="text" id="nomtitular" name="nomtitular" size="22">
-                                                       <br>
-
-                                                      <label for="banco">
-                                                  <span>Banco:</span>
-                                                  </label>
-                                                  <input type="text" id="banco" name="banco"  size="31">
-                                                       <br>
-
-                                                      <label for="mesvenc">
-                                                  <span>Mes Vencimiento:</span>
-                                                  </label>
-                                                  <input type="text" id="mesvenc" name="mesvenc" size="20">
-                                                        <br>
-
-                                                      <label for="annovenc">
-                                                   <span>Año Vencimiento:</span>
-                                                  </label>
-                                                  <input type="text" id="annovenc" name="annovenc" size="20">
-                                                        <br>
-
-                                                      <label for="email titular">
-                                                  <span>Email Titular:</span>
-                                                  </label>
-                                                  <input type="email" id="emailtitular" name="emailtitular" size="25">
-                                                        <br>
-                                                        
-                                                      <label for="rut">
-                                                    <span>Rut Titular:</span>
-                                                    </label>
-                                                    <input type="text" id="rut" name="rut" size="27"> 
-                                                         <br>
-                                                         <br>
-                                                         
-
-
-
-                                                    
-                                                    <input type="submit" class="btn-submit" onClick="comprobarClave()" value="Enviar">
-                                               </form> <br>
-                                                       <br>
+                                                    <input type="submit" class="btn-submit" value="Enviar">
+                                               </form> 
+                                                      <br>
+                                                      <br>
                     
         
                                               <script>
@@ -233,61 +52,7 @@
                                                }
                                                </script>
                   </div>
-            <script>
-             $(function(){
-                 $("#producto1").autocomplete({
-                         source: ["Pizza","Cupcakes","Queque","Sandwiches","Choripanes","Pie de Limon","Tartaletas","Trufas",],
-                         minLength:2
-                 });
-             });   
-           </script>
-        
-        
-         <script>
-	         function validarFormulario(){
-
-		         var txtNombre = document.getElementById('nombre').value;
-             var txtApellido = document.getElementById('apellido').value;
-             var txtDireccion = document.getElementById('direccion').value;
-             var txtComuna = document.getElementById('comuna').value;
-             var txtCorreo = document.getElementById('correo').value; 
-                                             
-        
-                                            
-		         if(txtNombre == null || txtNombre.length == 0 || /^\s+$/.test(txtNombre)){
-			        alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-			        document.datos.nombre.focus();
-			        return false;
-             }
-
-             if(txtApellido == null || txtApellido.length == 0 || /^\s+$/.test(txtApellido)){
-			        alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-			        document.datos.apellido.focus();
-			        return false;
-		         }   
-            
-             if(txtDireccion == null || txtDireccion.length == 0 || /^\s+$/.test(txtDireccion)){
-			        alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-			        document.datos.direccion.focus();
-			        return false;
-		         }  
-            
-             if(txtComuna == null || txtComuna.length == 0 || /^\s+$/.test(txtComuna)){
-			        alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-			        document.datos.comuna.focus();
-			        return false;
-		         }  
            
-             if(!(/\S+@\S+\.\S+/.test(txtCorreo))){
-			         alert('ERROR: Debe escribir un correo válido');
-			         document.datos.correo.value="";
-			         document.datos.correo.focus();
-			         return false;
-		          }
-		                                  
-		        return true;
-	         }
-          </script>  
         </div> 
         
         {% endblock %}
