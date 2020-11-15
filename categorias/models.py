@@ -45,12 +45,13 @@ class Comprador(models.Model):
         
     #Atributos
     id_comprador = models.AutoField(primary_key=True, help_text="ID Comprador")
-    nombre_comprador = models.TextField(max_length=30, help_text="Nombre Comprador")
-    apellido_comprador = models.TextField(max_length=30, help_text="Apellido Comprador")
+    nombre_comprador = models.TextField(max_length=15, help_text="Nombre Comprador")
+    apellido_comprador = models.TextField(max_length=15, help_text="Apellido Comprador")
     fono_comprador = models.CharField(max_length=12, help_text="Fono Comprador")
     dir_comprador = models.CharField(max_length=30, help_text="Dirección Comprador")
     comuna_comprador = models.CharField(max_length=3, choices=COMUNAS, help_text="Comuna Comprador")
     email_comprador = models.EmailField(max_length=25, help_text="E-mail Comprador")
+    usuario_comprador = models.CharField(max_length=15, help_text="Usuario Comprador")
     pass_comprador = models.CharField(max_length=20, help_text="Password Comprador")
  
 
@@ -109,6 +110,7 @@ class Vendedor(models.Model):
     dir_vendedor = models.CharField(max_length=30, help_text="Dirección Vendedor")
     com_vendedor = models.TextField(max_length=3, choices=COMUNAS, help_text="Comuna Vendedor")
     email_vendedor = models.EmailField(max_length=25, help_text="E-mail Vendedor")
+    usuario_vendedor = models.CharField(max_length=15, help_text="Usuario Vendedor")
     pass_vendedor = models.CharField(max_length=20, help_text="Password Vendedor")
    
 
@@ -181,94 +183,4 @@ class Producto(models.Model):
       #  cadena=self. id_producto+" "+self.nombre_producto+" "+self.precio_producto+" "+self.descripcion_producto+" "
        # +self.categoria+" "+ self.imagen
        # return cadena
-
-class Tarjeta(models.Model):
-    BANCO = (
-        ('S','Banco Bci'),
-        ('M','Banco de Chile'),
-        ('S','Banco Estado'),
-        ('M','Banco Santander'),
-        ('S','Banco BICE'),
-        ('M','Banco Condell'),
-        ('S','Banco CrediChile'),
-        ('M','Banco Edwards Citi'),
-        ('S','Banco Falabella'),
-        ('M','Banco Internacional'),
-        ('S','Banco Itaú'),
-        ('M','Banco Ripley'),
-        ('S','Banco Security'),
-        ('M','Scotiabank'),
-    )
-       
-    
-    #Atributos
-    id_tarjeta = models.AutoField(primary_key=True, help_text="ID Tarjeta")
-    nro_tarjeta = models.IntegerField(help_text="Nro Tarjeta")
-    nombre_titular = models.TextField(max_length=25, help_text="Nombre del titular de la tarjeta")
-    banco = models.TextField(max_length=1, choices=BANCO, help_text="Nombre del banco")
-    mes_vencimiento = models.CharField(max_length=2, help_text="Mes de vencimiento")
-    anno_vencimiento = models.CharField(max_length=4, help_text="Año de vencimiento")
-    comprador = models.OneToOneField(
-        Comprador,
-        on_delete=models.CASCADE,
-      
-    )
-    
-    #Métodos
-    #def __str__(self): 
-       # return self.id_tarjeta
-    #def tostring(self):
-       # cadena=self. id_tarjeta+" "+self.nro_tarjeta+" "+self.nombre_titular+" "+self.banco+" "+self.mes_vencimiento
-       # +" "+self.anno_vencimiento
-       # return cadena
-
-class CuentaBanco(models.Model):
-    BANCO = (
-        ('S','Banco Bci'),
-            ('M','Banco de Chile'),
-        ('S','Banco Estado'),
-            ('M','Banco Santander'),
-        ('S','Banco BICE'),
-            ('M','Banco Condell'),
-        ('S','Banco CrediChile'),
-            ('M','Banco Edwards Citi'),
-        ('S','Banco Falabella'),
-            ('M','Banco Internacional'),
-        ('S','Banco Itaú'),
-            ('M','Banco Ripley'),
-        ('S','Banco Security'),
-        ('M','Scotiabank'),
-        )
-    TIPOCUENTA = (
-        ('CC','Cuenta Corriente'),
-        ('CV','Cuenta Vista'),
-        ('CR', 'Cuenta Rut'),
-
-    )
-        
-    #Atributos
-    id_cuenta = models.AutoField(primary_key=True, help_text="ID cuenta")
-    nro_cuenta = models.IntegerField(help_text="Nro cuenta")
-    nombre_titular = models.TextField(max_length=25, help_text="Nombre del titular de la cuenta")
-    banco = models.TextField(max_length=1, choices=BANCO, help_text="Nombre del banco")
-    tipo_cuenta = models.CharField(max_length=20, help_text="Tipo de cuenta", choices=TIPOCUENTA)
-    email_titular = models.EmailField(max_length=25, help_text="E-mail titular")
-    rut_titular = models.CharField(max_length=10, help_text="Rut titular")
-    vendedor = models.OneToOneField(
-        Vendedor,
-        on_delete=models.CASCADE,
-        
-    )
-     
-    
-    #Métodos
-    def __str__(self): 
-        num=str(self.nro_cuenta)
-        return num
-
-
-   #def tostring(self):
-        #cadena=self. id_cuenta+" "+self.nro_cuenta+" "+self.nombre_titular+" "+self.banco+" "+self.tipo_cuenta
-       # +" "+self.email_titular+" "+ self.rut_titular
-        #return cadena
 
