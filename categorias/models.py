@@ -44,6 +44,7 @@ class Comprador(models.Model):
         
         
     #Atributos
+
     id_comprador = models.AutoField(primary_key=True)
     nombre_comprador = models.CharField(max_length=15)
     apellido_comprador = models.CharField(max_length=15)
@@ -53,14 +54,32 @@ class Comprador(models.Model):
     email_comprador = models.EmailField(max_length=25)
     usuario_comprador = models.CharField(max_length=15)
     pass_comprador = models.CharField(max_length=20)
+
+    id_comprador = models.AutoField(primary_key=True, help_text="ID Comprador")
+    nombre_comprador = models.TextField(max_length=15, help_text="Nombre Comprador")
+    apellido_comprador = models.TextField(max_length=15, help_text="Apellido Comprador")
+    fono_comprador = models.CharField(max_length=12, help_text="Fono Comprador")
+    dir_comprador = models.CharField(max_length=30, help_text="Dirección Comprador")
+    comuna_comprador = models.CharField(max_length=3, choices=COMUNAS, help_text="Comuna Comprador")
+    email_comprador = models.EmailField(max_length=25, help_text="E-mail Comprador")
+    usuario_comprador = models.CharField(max_length=15, blank=True, null=True, help_text="Usuario Comprador")
+    pass_comprador = models.CharField(max_length=20, help_text="Password Comprador")
+
  
 
     #Métodos
-    def __str__(self): 
-         return self.nombre_comprador
+    def __str__(self):
+        nom_completo = self.nombre_comprador+" "+self.apellido_comprador
+        return nom_completo
+    def complet(self):
+        nom_completo = self.nombre_comprador+" "+self.apellido_comprador
+        return nom_completo
     def tostring(self):
-         cadena=self.id_comprador+" "+self.apellido_comprador+" "+self.nombre_comprador+" "+self.fono_comprador+" "+self.dir_comprador+" "+self.comuna_comprador+" "+self.email_comprador+" "+self.pass_comprador
-         return cadena
+        cadena=self.id_comprador+" "+self.apellido_comprador+" "+self.nombre_comprador+" "+self.fono_comprador+" "+self.dir_comprador+" "+self.comuna_comprador+" "+self.email_comprador+" "+self.pass_comprador
+        return cadena
+
+
+
     
 class Vendedor(models.Model):
     #Choices
@@ -103,6 +122,7 @@ class Vendedor(models.Model):
         ('SAN','Santiago'),
     )
     #Atributos
+
     id_vendedor = models.AutoField(primary_key=True)
     nombre_vendedor = models.CharField(max_length=30)
     apellido_vendedor = models.CharField(max_length=30)
@@ -112,16 +132,30 @@ class Vendedor(models.Model):
     email_vendedor = models.EmailField(max_length=25)
     usuario_vendedor = models.CharField(max_length=15)
     pass_vendedor = models.CharField(max_length=20)
+
+    id_vendedor = models.AutoField(primary_key=True, help_text="ID Vendedor")
+    nombre_vendedor = models.TextField(max_length=30, help_text="Nombre Vendedor")
+    apellido_vendedor = models.TextField(max_length=30, help_text="Apellido Vendedor")
+    fono_vendedor = models.CharField(max_length=12, help_text="Fono Vendedor")
+    dir_vendedor = models.CharField(max_length=30, help_text="Dirección Vendedor")
+    com_vendedor = models.TextField(max_length=3, choices=COMUNAS, help_text="Comuna Vendedor")
+    email_vendedor = models.EmailField(max_length=25, help_text="E-mail Vendedor")
+    usuario_vendedor = models.CharField(max_length=15, help_text="Usuario Vendedor", null=True)
+    pass_vendedor = models.CharField(max_length=20, help_text="Password Vendedor")
+
    
 
     #Métodos
     #Retorna el nombre completo.
     def __str__(self): 
-        return self.nombre_vendedor
-   # def tostring(self):
-      #  cadena=self. id_vendedor+" "+self.apellido_vendedor+" "+self.nombre_vendedor+" "+self.fono_vendedor+" "+self.dir_vendedor
-      #  +" "+self.com_vendedor+" "+ self.email_vendedor+" "+self.pass_vendedor
-       # return cadena
+        nom_completo = self.nombre_vendedor+" "+self.apellido_vendedor
+        return nom_completo
+
+    def tostring(self):
+        cadena=self. id_vendedor+" "+self.apellido_vendedor+" "+self.nombre_vendedor+" "+self.fono_vendedor+" "+self.dir_vendedor
+        +" "+self.com_vendedor+" "+ self.email_vendedor+" "+self.pass_vendedor
+        return cadena
+
 
 class DetalleCompra(models.Model):
     #Atributos
@@ -153,6 +187,7 @@ class Producto(models.Model):
     )
 
     CATEGORIAS = (
+        ('P','Pan'),
         ('PA','Pasteles'),
         ('T','Torta'),
         ('G','Galletas'),
@@ -179,8 +214,11 @@ class Producto(models.Model):
     def __str__(self): 
         return self.nombre_producto
     
-    #def tostring(self):
-      #  cadena=self. id_producto+" "+self.nombre_producto+" "+self.precio_producto+" "+self.descripcion_producto+" "
-       # +self.categoria+" "+ self.imagen
-       # return cadena
+    def nom(self,Vendedor):
+        return self.nombre_producto+" de "+Vendedor.__str__
+    
+    def tostring(self):
+        cadena=self. id_producto+" "+self.nombre_producto+" "+self.precio_producto+" "+self.descripcion_producto+" "
+        +self.categoria+" "+ self.imagen
+        return cadena
 
