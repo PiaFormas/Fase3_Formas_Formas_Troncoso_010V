@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comprador, Vendedor
+from .models import Comprador, Vendedor, Producto
 
 class CompradorForm(forms.ModelForm):
     class Meta:
@@ -11,4 +11,8 @@ class VendedorForm(forms.ModelForm):
         model = Vendedor
         fields=["id_vendedor","nombre_vendedor","apellido_vendedor","fono_vendedor","dir_vendedor","com_vendedor","email_vendedor","usuario_vendedor","pass_vendedor"]
 
-        
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model= Producto
+        fields=["nombre_producto","unidad_medida","precio_producto","categoria","descripcion_producto","imagen"]    

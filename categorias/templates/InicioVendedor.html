@@ -2,6 +2,8 @@
 
 {% block content %}
   {% load static %}
+  {% load crispy_forms_tags %}
+  {% load humanize %}
 
     <head>
         <title>Mi sesion vendedor</title>
@@ -37,10 +39,34 @@
                 <div class=c1>
                     <div class="titulos-tarjetas">
                         <h4>Mis datos de registro</h4>
+                        
                     </div>
                     <div>
                         <div class="datagrid">
-                            <p>Aqui va un datagrid</p>
+                            <table class="table table-striped table-hover table-responsive-sm">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th> 
+                                    <th>Telefono </th> 
+                                    <th>Dirección</th>  
+                                    <th>Comuna</th>    
+                                    <th>Email</th>   
+                                    <th>Usuario</th>           
+                                </tr>
+    
+                                {% for p in vendedores %}
+                                <tr>
+                                    <td>{{ p.nombre_vendedor | title }}</td>
+                                    <td>{{ p.apellido_vendedor | title }}</td>
+                                    <td>{{ p.fono_vendedor | apnumber }}</td>
+                                    <td>{{ p.dir_vendedor  | title }}</td>
+                                    <td>{{ p.com_vendedor | title }}</td>
+                                    <td>{{ p.email_vendedor | title }}</td>
+                                    <td>{{ p.usuario_vendedor | title }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
                         </div>
                         <div class="row-mini5">
                             <button type="submit" class="btn btn-primary"><a href="Productos.html">Editar</a></button>
@@ -62,7 +88,31 @@
                         </div>
                     </div>
                     <div class="datagrid">
-                        <p>Aqui va un datagrid</p>
+                        <table class="table table-striped table-hover table-responsive-sm">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Precio</th> 
+                                <th>Descripción </th> 
+                                <th>Unidad Medida</th>  
+                                <th>Categoría</th>
+                                <th>Vendedor</th>                
+                            </tr>
+                           
+
+                            {% for i in productos %}
+                            <tr>
+                                <td>{{ i.id_producto | title }}</td>
+                                <td>{{ i.nombre_producto | title }}</td>
+                                <td>{{ i.precio_producto | intcomma }}</td>
+                                <td>{{ i.descripcion_producto  | title }}</td>
+                                <td>{{ i.unidad_medida | title }}</td>
+                                <td>{{ i.categoria | title }}</td>
+                                <td>{{ i.vendedor | title }}</td>
+                                
+                            </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                     <div class="botones">
                         <div class="row-mini5">
@@ -85,7 +135,32 @@
                     </div>
                     <div>
                         <div class="datagrid">
-                            <p>Aqui va un datagrid</p>
+                            <table class="table table-striped table-hover table-responsive-sm">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cantidad Producto</th>
+                                    <th>Monto Total</th> 
+                                    <th>Hora </th> 
+                                    <th>comprador</th>  
+                                    <th>Producto</th>
+                                    
+
+                                </tr>
+                               
+    
+                                {% for j in productos %}
+                                <tr>
+                                    <td>{{ j.id_compra | title }}</td>
+                                    <td>{{ j.cant_prod | title }}</td>
+                                    <td>{{ j.monto_total | intcomma }}</td>
+                                    <td>{{ j.hora_compra  | naturaltime }}</td>
+                                    <td>{{ j.comprador | title }}</td>
+                                    <td>{{ j.producto | title }}</td>
+                                    
+                                </tr>
+                                {% endfor %}
+                            </table>
+                         
                         </div>
                         <div class="botones">
                             <div class="row-mini6">
@@ -99,28 +174,25 @@
                 </div>          
             </div>
         </div>
-        {% load crispy_forms_tags %}
-        <div class="container-all" id="button">
-            <div class="popup">
-                <div class="img1"></div>
-                    <div class="container-text">
-                        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
-                        <form action="">
-                            <div class="contenedor-inputs">
-                                <h5>Nuevo producto</h5>
-                                <p>Nombre producto: <input type="text" name="nombre" size="60" required></p>
-                                <p>Unidad de medida: <input type="text" name="Unidad_medida" size="60" required></p>
-                                <p>Precio por unidad ($): <input type="text" name="number" size="60" required></p>
-                                <p>Categoría: <input type="text" name="cateogria" size="60" required></p>
-                                <p>Descripción: <input type="text" name="descripción" size="60" required>
-                                <p>Imagen: <input type="file" name="imagen" size="100" required>
-                            </div>
-                            <input type="submit" class="btn btn-primary"  value="Guardar">
-				        </form>  
-                    </div> 
-                </div> 
-            </div>
-        </div>
+     
+                    <div class="container-all" id="button">
+                        <div class="popup">
+                            <div class="img1"></div>
+                                <div class="container-text">
+                                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        <div class="contenedor-inputs">
+                                            {% csrf_token %}
+                                            {{ form | crispy }}
+                                        
+                                        </div>
+                                        <input type="submit" class="btn btn-primary"  value="Guardar">  
+                                    </form>  
+                                    {{mensaje}}
+                                </div> 
+                            </div> 
+                        </div>
+                    </div>
 
         <div class="row cuerpo1">
             

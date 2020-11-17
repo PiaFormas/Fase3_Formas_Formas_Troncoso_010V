@@ -166,12 +166,12 @@ class Producto(models.Model):
     )
     
     #Atributos
-    id_producto = models.AutoField(primary_key=True, help_text="ID Producto")
-    nombre_producto = models.TextField(max_length=25, help_text="Nombre del producto")
+    id_producto = models.AutoField(primary_key=True)
+    nombre_producto = models.CharField(max_length=25)
     precio_producto = models.IntegerField(help_text="Precio")
-    descripcion_producto = models.TextField(max_length=25, help_text="Nombre del producto")
-    unidad_medida = models.CharField(max_length=1, choices=UNIDAD_MEDIDA, help_text="Unidad de medida")
-    categoria = models.CharField(max_length=2, choices=CATEGORIAS, help_text="Categoría")
+    descripcion_producto = models.TextField(max_length=25)
+    unidad_medida = models.CharField(max_length=1, choices=UNIDAD_MEDIDA)
+    categoria = models.CharField(max_length=2, choices=CATEGORIAS)
     imagen = models.ImageField(help_text="Foto producto")
     vendedor = models.ForeignKey('Vendedor', on_delete=models.SET_NULL, null=True)
 

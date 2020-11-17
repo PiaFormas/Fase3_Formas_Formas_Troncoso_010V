@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate
-from .forms import CompradorForm, VendedorForm
+from .forms import CompradorForm, VendedorForm,ProductoForm
+from . models import Producto, Vendedor, DetalleCompra
 
 # Create your views here.
 def index(request):
@@ -8,9 +9,21 @@ def index(request):
         request,
         'index.html',)
 def InicioVendedor(request):
+    data= {
+        
+        'form': ProductoForm()
+    }
+    if request.method == 'POST':
+        formulario= ProductoForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+           formulario.save()
+           data["mensaje"] = "Producto guardado correctamente"
+        else:
+            data["form"] = formulario
+
     return render(
-        request,
-        'InicioVendedor.html',)
+        request,'InicioVendedor.html', data)
+   
 
 def Productos(request):
     return render(
@@ -59,3 +72,45 @@ def RegistrarseVendedor(request):
         request,
         'RegistrarseVendedor.html', data)
 
+def Listar_vendedores(request):
+    vendedores = Vendedor.objects.all()
+
+    data= {
+        'vendedores': vendedores
+    }
+    return render(request, 'InicioVendedor.html', data)
+
+def Listar_productos(request):
+    productos = Producto.objects.all()
+
+    data= {
+        'productos': productos
+    }
+    return render(request, 'InicioVendedor.html', data)
+
+
+def Listar_pedidos(request):
+    pedidos = DetalleCompra.objects.all()
+
+    data= {
+        'pedidos': pedidos
+    }
+    return render(request, 'InicioVendedor.html', data)
+
+#def Modificar_producto(request, id):
+
+    #producto = get_object_or_404(Producto, id=id)
+
+    #data = {
+        #'form': ProductoForm(instance=producto)
+   # }
+
+   # if  request.method == 'POST':
+      #  formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+       # if formulario.is_valid():
+          #  formulario.save()
+           # messages.success(request, "Modificado correctamente")
+          #  return redirect(to="listar_productos")
+       # data["form"] = formulario
+
+    #return render(request, 'app/crud/modificar.html', data)
