@@ -27,30 +27,31 @@
                     <h5>Sé parte de nuestra comunidad</h5><br> 
                                  
                                                    
-                                                     {% load crispy_forms_tags %}
-                                             <form name="datos" action="2" onsubmit="return validarFormulario()">
-                                                      
-                                                      
-                                                         {{ form1 | crispy }}
+                    {% load crispy_forms_tags %}
+                    <form action=""  class="formulario_comprador" method="post">
+                                {% csrf_token %}
+                             
+                                {{ form1 | crispy }}
 
 
-                                                    
-                                                   <input type="submit" class="btn-submit" value="Enviar">
-                                               </form> <br>
-                                                       <br>
-                    
-        
-                                              <script>
-                                                function inicio()
-                                               {
-                                                 document.getElementById("inic").style.display="block";
-                                               }
-      
-                                                 function cerrar()
-                                               {
-                                                 document.getElementById("inic").style.display="none";
-                                               }
-                                               </script>
+                           
+                          <button type="submit" id ="btnEnviar" class="button">Enviar</button>
+                      </form>      
+                                   <br>
+
+                                {{mensaje}}
+                                   <br>
+                     <script>
+                       function inicio()
+                      {
+                        document.getElementById("inic").style.display="block";
+                      }
+
+                        function cerrar()
+                      {
+                        document.getElementById("inic").style.display="none";
+                      }
+                      </script>
                   </div>
            
         
@@ -104,7 +105,7 @@
         
         {% endblock %}
                     
-      
+      <!--
      <footer class="site-footer">
         <div class="container">
           <div class="row">
@@ -149,7 +150,7 @@
           
           </div>
         </div>
-    </footer>   
+    </footer>-->   
     </body>
 </html>
 

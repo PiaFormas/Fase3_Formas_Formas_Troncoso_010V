@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django.contrib.humanize'
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

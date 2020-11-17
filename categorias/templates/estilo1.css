@@ -1,5 +1,5 @@
 /* Inicio sesión*/
-
+/*
 .inicio-sesion
 {
   background-color:rgb(231, 224, 210);
@@ -68,7 +68,7 @@ top: 1px;
 
 
 /*cabecera*/
-
+/*
 .inicio-sesion h5
 {
   font-size: 22px;
@@ -114,7 +114,7 @@ top: 1px;
 }
 
 /*Titulos intermedios*/
-
+/*
 .cuerpo1
 {
     margin-top:10px;
@@ -124,7 +124,7 @@ top: 1px;
 }
 
 /*Cartas productos*/
-
+/*
 .card
 {
     margin:auto;
@@ -200,7 +200,7 @@ top: 1px;
 {
     color:black;
 }
-
+/*
 .site-footer
 {
     background-color: #26272b;

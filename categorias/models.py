@@ -49,7 +49,7 @@ class Comprador(models.Model):
     apellido_comprador = models.CharField(max_length=15)
     fono_comprador = models.CharField(max_length=12)
     dir_comprador = models.CharField(max_length=30)
-    comuna_comprador = models.CharField(max_length=3)
+    comuna_comprador = models.CharField(max_length=3, choices=COMUNAS)
     email_comprador = models.EmailField(max_length=25)
     usuario_comprador = models.CharField(max_length=15)
     pass_comprador = models.CharField(max_length=20)
@@ -133,8 +133,8 @@ class DetalleCompra(models.Model):
     producto = models.ForeignKey('Producto', on_delete=models.SET_NULL, null=True)
 
     #Métodos
-    def __str__(self): 
-         return self.id_compra
+    #def __str__(self): 
+    #    return self.id_compra
     def tostring(self):
          cadena=self.id_compra+" "+self.cant_prod+" "+self.monto_total+" "+self.hora_compra
          return cadena

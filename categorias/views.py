@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate
 from .forms import CompradorForm, VendedorForm,ProductoForm
 from . models import Producto, Vendedor, DetalleCompra
+
 
 # Create your views here.
 def index(request):
@@ -36,16 +37,14 @@ def Registrarse(request):
 
 def RegistrarseComprador(request):
     data = {
-
-        'form':CompradorForm() 
-        
+        'form': CompradorForm()     
     }
+
     if request.method == 'POST':
         formulario = CompradorForm(data=request.POST)
         if formulario.is_valid():
-           formulario.save()
-           Comprador = authenticate(usuario_comprador=formulario.cleaned_data["Usuario Comprador"], pass_comprador=formulario.cleaned_data["Password Comprador"])
-           data["mensaje"] = "Comprador Guardado"
+            formulario.save()
+            data["mensaje"] = "Comprador Guardado"
         else:
             data["form"] = formulario
     
@@ -55,16 +54,14 @@ def RegistrarseComprador(request):
 
 def RegistrarseVendedor(request):
     data = {
-
-        'form1':VendedorForm() 
-        
+        'form1': VendedorForm()   
     }
+
     if request.method == 'POST':
         formulario = VendedorForm(data=request.POST)
         if formulario.is_valid():
-           formulario.save()
-           Vendedor = authenticate(usuario_vendedor=formulario.cleaned_data["Usuario Comprador"], pass_comprador=formulario.cleaned_data["Password Vendedor"])
-           data["mensaje"] = "Vendedor Guardado"
+             formulario.save()
+             data["mensaje"] = "Vendedor Guardado"
         else:
             data["form1"] = formulario
    
@@ -72,7 +69,8 @@ def RegistrarseVendedor(request):
         request,
         'RegistrarseVendedor.html', data)
 
-def Listar_vendedores(request):
+
+def ListarVendedores(request):
     vendedores = Vendedor.objects.all()
 
     data= {
@@ -80,7 +78,7 @@ def Listar_vendedores(request):
     }
     return render(request, 'InicioVendedor.html', data)
 
-def Listar_productos(request):
+def ListarProductos(request):
     productos = Producto.objects.all()
 
     data= {
@@ -89,7 +87,7 @@ def Listar_productos(request):
     return render(request, 'InicioVendedor.html', data)
 
 
-def Listar_pedidos(request):
+def ListarPedidos(request):
     pedidos = DetalleCompra.objects.all()
 
     data= {
@@ -97,20 +95,20 @@ def Listar_pedidos(request):
     }
     return render(request, 'InicioVendedor.html', data)
 
-#def Modificar_producto(request, id):
+def ModificarProductos(request, id):
 
-    #producto = get_object_or_404(Producto, id=id)
+    producto = get_object_or_404(Producto, id_producto=id)
 
-    #data = {
-        #'form': ProductoForm(instance=producto)
-   # }
+    data = {
+        'form': ProductoForm(instance= producto)
+    }
 
-   # if  request.method == 'POST':
-      #  formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
-       # if formulario.is_valid():
-          #  formulario.save()
-           # messages.success(request, "Modificado correctamente")
-          #  return redirect(to="listar_productos")
-       # data["form"] = formulario
+    if  request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+        if formulario.is_valid():
+           formulario.save()
+           data["mensaje"] = "Producto modificado correctamente"
+           return redirect(to="ListarProductos")
+        data["form"] = formulario
 
-    #return render(request, 'app/crud/modificar.html', data)
+    return render(request, 'InicioVendedor.html', data)

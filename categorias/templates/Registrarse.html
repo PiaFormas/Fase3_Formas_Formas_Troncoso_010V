@@ -5,37 +5,23 @@
 {% block content %}
   {% load static %}
 
-    <head>
+   <!--- <head>
         <title>Registro</title>
         
         <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
         <link href="{% static 'css/estilo2.css' %}" rel="stylesheet">
         
     </head>
-    <body>
-        <div class="row cabecera">
-
-            <div class="col-2">
-                <img class="logo" src="{% static 'img/logoantojo.png' %}" alt="logo1">
-            </div>
-            <div class="col-5">
-                <h1>Lo que buscas ante tus ojos...</h1> 
-                
-            </div>
-           
-            </div>
-            <div class="col-2">
-                <a href="javascript:inicio()"><img class="user" src="{% static 'img/user.png' %}" alt="user1"></a>
-               
-            </div>
-        </div> 
-        <div class="row cuerpo1">
-            
-        </div>
+    <body>-->
+      
+        
         <div class="row cuerpo2">
           <div class="col-6">
+            
               <div class=c1>
-                  <div class="titulos-tarjetas">
+                
+                  <div class="titulos-tarjetas" style="background-image: url({% static 'img/cuadrado1.jpg' %});">
+                    
                       <h1>¿Quieres disfrutar de <br>deliciosos antojos?</h1>
                       <h3>Regístrate <b><a href="RegistrarseComprador.html">aquí</a></b> para comprar</h3>
                   </div>
@@ -44,14 +30,15 @@
 
           <div class="col-6">
               <div class=c2>
-                  <div class="titulos-tarjetas">
+                  <div class="titulos-tarjetas" style="background-image: url({% static 'img/cuadrado2.jpg' %});">
                       <h1>¿Quieres crear nuevos y <br>deliciosos antojos?</h1>
                       <h3>Regístrate <b><a href="RegistrarseVendedor.html">aquí</a></b> para vender</h3>
                   </div>
               </div>         
           </div>
+        </div>
           
-      </div>
+      
 
       <div class="row cuerpo1">
           
@@ -85,14 +72,7 @@
           }
         </script>
 
-        <script>
-            $(function(){
-                $("#producto1").autocomplete({
-                        source: ["Pizza","Cupcakes","Queque","Sandwiches","Choripanes","Pie de Limon","Tartaletas","Trufas",],
-                        minLength:2
-                });
-            });   
-        </script>
+        
         
         
                                          <script>
@@ -137,98 +117,6 @@
 	                                   }
                                         
                                           </script>  
-        
-        
-        <div class="overlay">
-           <div class="container-all" id="modal">
-                <div class="popup">
-                  <div class="img"></div>
-                    <div class="container-text">
-                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
-                       <h1>"Regístrate Aquí"</h1>
-                        <h5>Sé parte de nuestra comunidad</h5><br>
-    
-					                     
-                                          <script>
-                                            function comprobarClave(){
-                                            clave1 = document.datos.clave1.value
-                                            clave2 = document.datos.clave2.value
-
-                                            if (clave1 == clave2 && clave1!="" && clave2!="")
-                                                    alert("¡Gracias por Registrarse!")
-                                            else 
-                                                if(clave1 != clave2)
-                                                    alert("Las claves no coinciden")
-                
-                                                else
-                                                    if(clave1==""||clave2=="")
-                                                    alert("Debe ingresar una clave")
-                
-                                            }
-                                           </script>
-                                          <form name="datos" action="2" onsubmit="return validarFormulario()">
-		                                  <label for="nombre">
-			                                 <span>Nombre:</span>
-		                                  </label>
-		                                  <input type="text" id="nombre" name="nombre">
-                                    
-                                             <br>
-                                          <label for="apellido">
-			                                 <span>Apellido:</span>
-		                                  </label>
-		                                  <input type="text" id="apellido" name="apellido">
-                                         
-                                             <br>
-                                             
-                                          <label for="direccion">
-			                                 <span>Dirección:</span>
-		                                  </label>
-		                                  <input type="text" id="direccion" name="direccion">
-                                         
-                                             <br>
-                                             
-                                          <label for="comuna">
-			                                 <span>Comuna:</span>
-		                                  </label>
-		                                  <input type="text" id="comuna" name="comuna">
-                                         
-                                             <br>
-                                             
-                                          <label for="correo">
-			                                 <span>Correo electrónico:</span>
-		                                  </label>
-		                                  <input type="email" id="correo" name="correo" >
-                                             
-                                             <br>
-                                          
-                                          <label for="nombre">
-			                                 <span>Usuario:</span>
-		                                  </label>
-		                                  <input type="text" id="usuario" name="user">
-                                              
-                                             <br>
-                                          
-                                          <label for="contrasena">
-			                                 <span>Contraseña:</span>
-		                                  </label>
-		                                  <input type="password" name="clave1" pattern=".{6,}" size="20">
-                                             
-                                             <br>
-                                          
-                                          <label for="contrasena2">
-			                                 <span>Repetir Contraseña:</span>
-		                                  </label>
-		                                  <input type="password" name="clave2" pattern=".{6,}" size="20">
-                                              <br>
-                                             
-                                          <input type="submit" class="btn-submit" onClick="comprobarClave()" value="Enviar">
-	                                      </form>
-                                             
-                              
-                    </div> 
-              </div> 
-          </div>
        
-    </div>
     {% endblock %}
-     
+  
