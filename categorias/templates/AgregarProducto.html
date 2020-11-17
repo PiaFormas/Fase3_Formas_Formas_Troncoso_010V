@@ -1,0 +1,129 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  {% load static %}
+
+    <head>
+        <title>Mi sesion vendedor</title>
+       
+        <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
+        <link href="{% static 'css/estilo6.css' %}"rel="stylesheet">
+        <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+        <script src="{% static 'js/funciones1.js' %}"></script>
+        <script src="https://kit.fontawesome.com/5bca04f22b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        <div class="row cabecera">
+            <div class="col-2">
+                <img class="logo" src="{% static 'img/logoantojo.png' %}" alt="logo">
+            </div>
+            <div class="col-8">
+                <h1>Lo que buscas ante tus ojos...</h1>
+                <h3>Sitio de Vendedor</h3>
+            </div>
+            <div class="col-2">
+                <a href="javascript:inicio()"><img class="user" src="{% static 'img/user.png' %}" alt="icono-usuario"></a>
+                <h5>Bienvenid@</h5> 
+            </div>
+        </div> 
+
+        <div class="row cuerpo1">
+            
+        </div>
+
+        <div class="row cuerpo2">
+            <div class="col-4">
+                <div class=c1>
+                    <div class="titulos-tarjetas">
+                        <h4>Mis datos de registro</h4>
+                    </div>
+                    <div>
+                        <div class="datagrid">
+                            <p>Aqui va un datagrid</p>
+                        </div>
+                        <div class="row-mini5">
+                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Editar</a></button>
+                        </div>
+                    </div>
+                </div>         
+            </div>
+            <div class="col-4">
+                <div class="c2">
+                    <div class="titulos-tarjetas">
+                        <h4>Listado de Productos</h4>
+                    </div>
+                    <div class="busqueda">
+                        <div class="row-mini3">
+                            <input type="text" class="form-control" id="busqueda">
+                        </div>
+                        <div class="row-mini4">
+                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Buscar</a></button>
+                        </div>
+                    </div>
+                    <div class="datagrid">
+                        <p>Aqui va un datagrid</p>
+                    </div>
+                    <div class="botones">
+                        <div class="row-mini5">
+                            <a href="#button" class="btn btn-primary">Añadir</a>
+                        </div>
+                        <div class="row-mini5">
+                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Editar</a></button>
+                        </div>
+                        <div class="row-mini5">
+                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Eliminar</a></button>
+                        </div>
+                    </div>
+                </div>         
+            </div>
+
+            <div class="col-4">
+                <div class="c3">
+                    <div class="titulos-tarjetas">
+                        <h4>Listado de Pedidos</h4>
+                    </div>
+                    <div>
+                        <div class="datagrid">
+                            <p>Aqui va un datagrid</p>
+                        </div>
+                        <div class="botones">
+                            <div class="row-mini6">
+                                <button type="submit" class="btn btn-primary"><a href="Productos.html">Ordenar</a></button>
+                            </div>
+                            <div class="row-mini6">
+                                <button type="submit" class="btn btn-primary"><a href="Productos.html">Ver Historial</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            </div>
+        </div>
+
+        <div class="container-all" id="button">
+            <div class="popup">
+                <div class="img1"></div>
+                    <div class="container-text">
+                        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
+                        <form action="">
+                            <div class="contenedor-inputs">
+                                <h5>Nuevo producto</h5>
+                                <p>Nombre producto: <input type="text" name="nombre" size="60" required></p>
+                                <p>Unidad de medida: <input type="text" name="Unidad_medida" size="60" required></p>
+                                <p>Precio por unidad ($): <input type="text" name="number" size="60" required></p>
+                                <p>Categoría: <input type="text" name="cateogria" size="60" required></p>
+                                <p>Descripción: <input type="text" name="descripción" size="60" required>
+                                <p>Imagen: <input type="file" name="imagen" size="100" required>
+                            </div>
+                            <input type="submit" class="btn btn-primary"  value="Guardar">
+				        </form>  
+                    </div> 
+                </div> 
+            </div>
+        </div>
+
+        <div class="row cuerpo1">
+            
+        </div>
+
+        {% endblock %}

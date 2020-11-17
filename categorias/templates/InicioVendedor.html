@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "base_generic.html" %}
+
+{% block content %}
+  {% load static %}
+
     <head>
         <title>Mi sesion vendedor</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"> 
-        <link href="estilo5.css" rel="stylesheet">
-        <script src="js/jquery-3.5.1.min.js"></script>
-        <script src="js/funciones1.js"></script>
+       
+        <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
+        <link href="{% static 'css/estilo6.css' %}"rel="stylesheet">
+        <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+        <script src="{% static 'js/funciones1.js' %}"></script>
         <script src="https://kit.fontawesome.com/5bca04f22b.js" crossorigin="anonymous"></script>
     </head>
     <body>
 
         <div class="row cabecera">
             <div class="col-2">
-                <img class="logo" src="img/logoantojo.png" alt="logo">
+                <img class="logo" src="{% static 'img/logoantojo.png' %}" alt="logo">
             </div>
             <div class="col-8">
                 <h1>Lo que buscas ante tus ojos...</h1>
                 <h3>Sitio de Vendedor</h3>
             </div>
             <div class="col-2">
-                <a href="javascript:inicio()"><img class="user" src="img/user.png" alt="icono-usuario"></a>
+                <a href="javascript:inicio()"><img class="user" src="{% static 'img/user.png' %}" alt="icono-usuario"></a>
                 <h5>Bienvenid@</h5> 
             </div>
         </div> 
@@ -64,7 +66,7 @@
                     </div>
                     <div class="botones">
                         <div class="row-mini5">
-                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Nuevo</a></button>
+                            <a href="#button" class="btn btn-primary">Añadir</a>
                         </div>
                         <div class="row-mini5">
                             <button type="submit" class="btn btn-primary"><a href="Productos.html">Editar</a></button>
@@ -97,55 +99,31 @@
                 </div>          
             </div>
         </div>
-
-        <div class="row cuerpo1">
-           
+        {% load crispy_forms_tags %}
+        <div class="container-all" id="button">
+            <div class="popup">
+                <div class="img1"></div>
+                    <div class="container-text">
+                        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
+                        <form action="">
+                            <div class="contenedor-inputs">
+                                <h5>Nuevo producto</h5>
+                                <p>Nombre producto: <input type="text" name="nombre" size="60" required></p>
+                                <p>Unidad de medida: <input type="text" name="Unidad_medida" size="60" required></p>
+                                <p>Precio por unidad ($): <input type="text" name="number" size="60" required></p>
+                                <p>Categoría: <input type="text" name="cateogria" size="60" required></p>
+                                <p>Descripción: <input type="text" name="descripción" size="60" required>
+                                <p>Imagen: <input type="file" name="imagen" size="100" required>
+                            </div>
+                            <input type="submit" class="btn btn-primary"  value="Guardar">
+				        </form>  
+                    </div> 
+                </div> 
+            </div>
         </div>
 
-        <footer class="site-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <h6>Acerca de</h6>
-                <p class="text-justify">antojo.com es un grupo de personas emprendedoras que quieren marcar una diferencia y vender sus productos caseros con un sello único y de calidad, dentro de una comunidad confiable y cercana.</p>
-              </div>
-    
-              <div class="col-xs-6 col-md-3">
-                <h6>Links rápidos</h6>
-                <ul class="footer-links">
-                  <li><a href="">Nosotros</a></li>
-                  <li><a href="">Contáctanos</a></li>
-                  <li><a href="">Sé parte de nosotros</a></li>
-                  <li><a href="">Términos y condiciones</a></li>
-                  <li><a href="">Mapa del  sitio</a></li>
-                 
-                </ul>
-              </div>
-    
-              <div class="col-xs-6 col-md-3">
-                <h6>Síguenos en</h6>
-                <ul class="footer-links">
-                  <li><a class="facebook" href="https://www.facebook.com/antojouhlala"><i class="fab fa-facebook-square"></i> Facebook</a></li>
-                  <li><a class="twitter" href="https://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a></li>
-                 
-                  <li><a class="youtube" href="https://www.youtube.com"><i class="fa fa-youtube"></i> Youtube</a></li>
-                
-                </ul>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-sm-6 col-xs-12">
-                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
-             <a href="#">Antojo</a>.
-                </p>
-              </div>
-    
-    
-            </div>
-          </div>
-    </footer>
-    </body>
-</html>
+        <div class="row cuerpo1">
+            
+        </div>
+
+        {% endblock %}

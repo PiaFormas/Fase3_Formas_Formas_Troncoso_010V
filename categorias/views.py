@@ -58,3 +58,4 @@ def RegistrarseVendedor(request):
     return render(
         request,
         'RegistrarseVendedor.html', data)
+
