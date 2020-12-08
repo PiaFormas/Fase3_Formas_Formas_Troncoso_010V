@@ -55,15 +55,7 @@ class Comprador(models.Model):
     usuario_comprador = models.CharField(max_length=15)
     pass_comprador = models.CharField(max_length=20)
 
-    id_comprador = models.AutoField(primary_key=True, help_text="ID Comprador")
-    nombre_comprador = models.TextField(max_length=15, help_text="Nombre Comprador")
-    apellido_comprador = models.TextField(max_length=15, help_text="Apellido Comprador")
-    fono_comprador = models.CharField(max_length=12, help_text="Fono Comprador")
-    dir_comprador = models.CharField(max_length=30, help_text="Dirección Comprador")
-    comuna_comprador = models.CharField(max_length=3, choices=COMUNAS, help_text="Comuna Comprador")
-    email_comprador = models.EmailField(max_length=25, help_text="E-mail Comprador")
-    usuario_comprador = models.CharField(max_length=15, blank=True, null=True, help_text="Usuario Comprador")
-    pass_comprador = models.CharField(max_length=20, help_text="Password Comprador")
+   
 
  
 
@@ -133,15 +125,7 @@ class Vendedor(models.Model):
     usuario_vendedor = models.CharField(max_length=15)
     pass_vendedor = models.CharField(max_length=20)
 
-    id_vendedor = models.AutoField(primary_key=True, help_text="ID Vendedor")
-    nombre_vendedor = models.TextField(max_length=30, help_text="Nombre Vendedor")
-    apellido_vendedor = models.TextField(max_length=30, help_text="Apellido Vendedor")
-    fono_vendedor = models.CharField(max_length=12, help_text="Fono Vendedor")
-    dir_vendedor = models.CharField(max_length=30, help_text="Dirección Vendedor")
-    com_vendedor = models.TextField(max_length=3, choices=COMUNAS, help_text="Comuna Vendedor")
-    email_vendedor = models.EmailField(max_length=25, help_text="E-mail Vendedor")
-    usuario_vendedor = models.CharField(max_length=15, help_text="Usuario Vendedor", null=True)
-    pass_vendedor = models.CharField(max_length=20, help_text="Password Vendedor")
+ 
 
    
 

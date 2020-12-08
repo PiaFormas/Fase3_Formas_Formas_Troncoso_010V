@@ -4,17 +4,7 @@
 
 {% block content %}
   {% load static %}
-
-   <!--- <head>
-        <title>Registro</title>
-        
-        <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
-        <link href="{% static 'css/estilo2.css' %}" rel="stylesheet">
-        
-    </head>
-    <body>-->
-      
-        
+  
         <div class="row cuerpo2">
           <div class="col-6">
             
@@ -23,7 +13,7 @@
                   <div class="titulos-tarjetas" style="background-image: url({% static 'img/cuadrado1.jpg' %});">
                     
                       <h1>¿Quieres disfrutar de <br>deliciosos antojos?</h1>
-                      <h3>Regístrate <b><a href="RegistrarseComprador.html">aquí</a></b> para comprar</h3>
+                      <h3>Regístrate <b><li><a href="{% url 'RegistrarseComprador' %}">aquí</a></li></b> para comprar</h3>
                   </div>
               </div>         
           </div>
@@ -32,7 +22,7 @@
               <div class=c2>
                   <div class="titulos-tarjetas" style="background-image: url({% static 'img/cuadrado2.jpg' %});">
                       <h1>¿Quieres crear nuevos y <br>deliciosos antojos?</h1>
-                      <h3>Regístrate <b><a href="RegistrarseVendedor.html">aquí</a></b> para vender</h3>
+                      <h3>Regístrate <b><li><a href="{% url 'RegistrarseVendedor' %}">aquí</a></li></b> para vender</h3>
                   </div>
               </div>         
           </div>

@@ -3,6 +3,9 @@
 
 
         {% block content %}
+        
+
+       
 
         <div class="row cuerpo2">
             <style>
@@ -17,12 +20,35 @@
             </style>
          
                   <div class="col-6">
-                    <div class="titulo">
+                    <div class="titulo1">
                       <h1>¿Quieres comprar un antojo?</h1>
-                      
+                      <br>
+                      <br>
+                      <div style="width: 440px; height: 280px; margin-left: 245px;" id="mapContainer"></div>
+                  <script>
+                    // Initialize the platform object:
+                    var platform = new H.service.Platform({
+                      'apikey': '{8RsuhkZitxbcyrnqSfSjlYUaW8tmaZBlWVkqyezPHas}'
+                    });
+              
+                    // Obtain the default map types from the platform object
+                    var maptypes = platform.createDefaultLayers();
+              
+                    // Instantiate (and display) a map object:
+                    var map = new H.Map(
+                      document.getElementById('mapContainer'),
+                      maptypes.vector.normal.map,
+                      {
+                        zoom: 10,
+                        center: { lng: 13.4, lat: 52.51 }
+                      });
+                  </script>
                   </div>
                   </div>
+
+                 
                   <div class="col-4">
+                    <div class="titulo2">
                     <br>
                     <h1>"Regístrate Aquí"</h1>
                     <h5>Sé parte de nuestra comunidad</h5><br> 
@@ -53,58 +79,13 @@
                        document.getElementById("inic").style.display="none";
                      }
                      </script>
+                     </div>
                   </div>
-           
+                
         </div> 
         
         {% endblock %}
-                    
-      <!--
-     <footer class="site-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <h6>Acerca de</h6>
-              <p class="text-justify">antojo.com es un grupo de personas emprendedoras que quieren marcar una diferencia y vender sus productos caseros con un sello único y de calidad, dentro de una comunidad confiable y cercana.</p>
-            </div>
-  
-            <div class="col-xs-6 col-md-3">
-              <h6>Links rápidos</h6>
-              <ul class="footer-links">
-                <li><a href="">Nosotros</a></li>
-                <li><a href="">Contáctanos</a></li>
-                <li><a href="">Sé parte de nosotros</a></li>
-                <li><a href="">Términos y condiciones</a></li>
-                <li><a href="">Mapa del  sitio</a></li>
-               
-              </ul>
-            </div>
-  
-            <div class="col-xs-6 col-md-3">
-              <h6>Síguenos en</h6>
-              <ul class="footer-links">
-                <li><a class="facebook" href="https://www.facebook.com/antojouhlala"><i class="fab fa-facebook-square"></i> Facebook</a></li>
-                <li><a class="twitter" href="https://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a></li>
-               
-                <li><a class="youtube" href="https://www.youtube.com"><i class="fa fa-youtube"></i> Youtube</a></li>
-              
-              </ul>
-            </div>
-          </div>
-          <hr>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 col-sm-6 col-xs-12">
-              <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
-           <a href="#">Antojo</a>.
-              </p>
-            </div>
-  
-          
-          </div>
-        </div>
-    </footer>  --> 
+       
     
 
 

@@ -174,9 +174,8 @@ top: 1px;
 
 .user
 {
-    width:12%;
-    margin-left: 37px;
-    margin-bottom: 10px;
+  width:12%;
+  margin-bottom: 10px
 }
 
 .col-5 h1
@@ -194,6 +193,11 @@ top: 1px;
 {
     color:black;
 }
+
+
+
+/*Footer*/
+
 
 .site-footer
 {
