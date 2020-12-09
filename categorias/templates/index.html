@@ -1,47 +1,8 @@
-{% extends "base_generic.html" %}
+{% extends "base_login.html" %}
 
-{% block content %}
-  {% load static %}
+{% block contentinicio %}
+{% load static %}
   
-  
-  
-  <div class="row cuerpo1">
-     
-     
-     <img class="pasos" src="{% static 'img/pasos.png' %}" alt="pasosCompra">
-     <div class="row cabecera" style="background-image: url({% static 'img/Panaderia1.jpg' %})"></div>
-    </div>
-    
-    <div class="overlay">
-      
-      <div class="inicio-sesion" id="inic">
-         
-        <img class="logoini" src="{% static 'img/logoantojo.png' %}" alt="logo">
-        <h5><b>Inicia sesión</b></h5>
-        <form action="#">
-          <div class="contenedor-inputs">
-            <p class="nom">Usuario:<input  type="text" name="nombre" size="18" required></p>
-            <p class="pass">Contraseña: <input type="password" name="contraseña" size="18" required></p>
-          </div>
-      
-          <input type="submit" class="btn-submit" value="Enviar">
-        </form>
-        <a href="javascript:cerrar()" id="cerrar" class="btn-cerrar-popup">X</a>
-      </div>
-    </div>
-
-    <script>
-    function inicio()
-    {
-      document.getElementById("inic").style.display="block";
-    }
-
-    function cerrar()
-    {
-    document.getElementById("inic").style.display="none";
-    }
-    </script>
-    
       <div id="carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carousel" data-slide-to="0" class="active"></li>

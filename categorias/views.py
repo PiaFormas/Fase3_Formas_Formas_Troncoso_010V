@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate
+from django.http import HttpResponseRedirect, HttpResponse
 from .forms import CompradorForm, VendedorForm,ProductoForm
 from . models import Producto, Vendedor, DetalleCompra
 
@@ -10,20 +11,17 @@ def index(request):
         request,
         'index.html',)
 def InicioVendedor(request):
-    data= {
-        
-        'form': ProductoForm()
-    }
+   
+    productos = Producto.objects.all()
+
     if request.method == 'POST':
         formulario= ProductoForm(data=request.POST, files=request.FILES)
         if formulario.is_valid():
            formulario.save()
-           data["mensaje"] = "Producto guardado correctamente"
-        else:
-            data["form"] = formulario
-
+           #data["mensaje"] = "Producto guardado correctamente"
+    formulario=ProductoForm()
     return render(
-        request,'InicioVendedor.html', data)
+        request,'InicioVendedor.html', {'form':formulario,'productos':productos})
    
 
 def Productos(request):
@@ -70,45 +68,58 @@ def RegistrarseVendedor(request):
         'RegistrarseVendedor.html', data)
 
 
-def ListarVendedores(request):
-    vendedores = Vendedor.objects.all()
+#def ListarVendedores(request):
+    #vendedores = Vendedor.objects.all()
 
-    data= {
-        'vendedores': vendedores
-    }
-    return render(request, 'InicioVendedor.html', data)
+    #data= {
+       # 'vendedores': vendedores
+    #}
+   # return render(request, 'InicioVendedor.html', data)
 
-def ListarProductos(request):
+
+
+
+#def ListarPedidos(request):
+   # pedidos = DetalleCompra.objects.all()
+
+   # data= {
+        #'pedidos': pedidos
+   # }
+    #return render(request, 'InicioVendedor.html', data)
+
+def EditarProductos(request, **kwargs):
     productos = Producto.objects.all()
+    producto = Producto.objects.get(id_producto=kwargs.get('id'))
+    form = ProductoForm(instance=producto)
+    
+    return render(request, 'InicioVendedor.html', {'form':form,'productos':productos, 'productoid':producto.id_producto})
 
-    data= {
-        'productos': productos
-    }
-    return render(request, 'InicioVendedor.html', data)
+def ModificarProductos(request, **kwargs):
+    producto = Producto.objects.get(id_producto=kwargs.get('id'))
+    form = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+    
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('../../Editar-producto/' + str(producto.id_producto))
 
+def EliminarProductos(request, **kwargs):
+    producto = Producto.objects.get(id_producto=kwargs.get('id'))
+    producto.delete()
+    
+    return redirect(to="InicioVendedor")
+    
+    #producto = get_object_or_404(Producto, id_producto=id)
 
-def ListarPedidos(request):
-    pedidos = DetalleCompra.objects.all()
+    #data = {
+        #'form': ProductoForm(instance= producto)
+    #}
 
-    data= {
-        'pedidos': pedidos
-    }
-    return render(request, 'InicioVendedor.html', data)
+    #if  request.method == 'POST':
+        #formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+        #if formulario.is_valid():
+           #formulario.save()
+           #data["mensaje"] = "Producto modificado correctamente"
+           #return redirect(to="ListarProductos")
+       # data["form"] = formulario
 
-def ModificarProductos(request, id):
-
-    producto = get_object_or_404(Producto, id_producto=id)
-
-    data = {
-        'form': ProductoForm(instance= producto)
-    }
-
-    if  request.method == 'POST':
-        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
-        if formulario.is_valid():
-           formulario.save()
-           data["mensaje"] = "Producto modificado correctamente"
-           return redirect(to="ListarProductos")
-        data["form"] = formulario
-
-    return render(request, 'InicioVendedor.html', data)
+    #return render(request, 'InicioVendedor.html', data)

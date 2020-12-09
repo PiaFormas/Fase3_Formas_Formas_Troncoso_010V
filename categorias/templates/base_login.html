@@ -1,0 +1,59 @@
+{% extends "base_generic.html" %}
+
+{% block login%}
+{% load static %}
+<div class="col-12 col-md-3 mt-4 offset-md-2 mb-md-0">
+  <div class="row w-100 justify-content-between botoneslogin">
+        <div class="col-6 col-md-12">
+          <div class="col-12">
+          <a href="javascript:inicio()"><img class="user " src="{% static 'img/user.png' %}" alt="usuario"></a>
+          </div>
+          <h5>Inicia sesión</h5> 
+        </div>
+      <button type="submit" class="btn btn-register my-4 mx-md-auto my-md-0"><li><a href="{% url 'Registrarse' %}">Regístrate</a></li></button>
+  </div>
+</div>
+{% endblock%}
+
+{% block contentlogin %}
+{% load static %}
+  
+  
+  
+  <div class="row">
+    
+    
+    <div class="overlay">
+      
+      <div class="inicio-sesion" id="inic">
+         
+        <img class="logoini" src="{% static 'img/logoantojo.png' %}" alt="logo">
+        <h5><b>Inicia sesión</b></h5>
+        <form action="#">
+          <div class="contenedor-inputs">
+            <p class="nom">Usuario:<input  type="text" name="nombre" size="18" required></p>
+            <p class="pass">Contraseña: <input type="password" name="contraseña" size="18" required></p>
+          </div>
+      
+          <input type="submit" class="btn-submit" value="Enviar">
+        </form>
+        <a href="javascript:cerrar()" id="cerrar" class="btn-cerrar-popup">X</a>
+      </div>
+    </div>
+
+    <script>
+    function inicio()
+    {
+      document.getElementById("inic").style.display="block";
+    }
+
+    function cerrar()
+    {
+    document.getElementById("inic").style.display="none";
+    }
+    </script>
+    
+    {% block contentinicio %}
+    {% endblock %}
+
+{% endblock %}

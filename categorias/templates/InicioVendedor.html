@@ -1,77 +1,23 @@
-{% extends "base_generic.html" %}
+{% extends "base_login.html" %}
+        
+{% block title %}
+<title>Mi sesion vendedor</title>
+{% endblock %}
+
+{% block funciones %}
+{% load static %}
+<script src="{% static 'js/funciones1.js' %}"></script>
+{% endblock %}
 
 {% block content %}
   {% load static %}
   {% load crispy_forms_tags %}
   {% load humanize %}
 
-    <head>
-        <title>Mi sesion vendedor</title>
-       
-        <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
-        <link href="{% static 'css/estilo6.css' %}"rel="stylesheet">
-        <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
-        <script src="{% static 'js/funciones1.js' %}"></script>
-        <script src="https://kit.fontawesome.com/5bca04f22b.js" crossorigin="anonymous"></script>
-        <style>
-        table, th, td {
-         font-size: 7.5px;
-            }
-
-        </style>
-    </head>
-    <body>
-
-       
-
-        <div class="row cuerpo1">
-            
-        </div>
-
         <div class="row cuerpo2">
-            <div class="col-4">
-                <div class=c1>
-                    <div class="titulos-tarjetas">
-                        <h4>Mis datos de registro</h4>
-                        
-                    </div>
-                    <div>
-                        <div class="datagrid">
-                        
-                            <table class="table table-striped table-hover table-responsive-sm">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th> 
-                                    <th>Telefono </th> 
-                                    <th>Dirección</th>  
-                                    <th>Comuna</th>    
-                                    <th>Email</th>   
-                                    <th>Usuario</th>           
-                                </tr>
-    
-                                {% for p in vendedores %}
-                                <tr>
-                                    <td>{{ p.nombre_vendedor | title }}</td>
-                                    <td>{{ p.apellido_vendedor | title }}</td>
-                                    <td>{{ p.fono_vendedor | apnumber }}</td>
-                                    <td>{{ p.dir_vendedor  | title }}</td>
-                                    <td>{{ p.com_vendedor | title }}</td>
-                                    <td>{{ p.email_vendedor | title }}</td>
-                                    <td>{{ p.usuario_vendedor | title }}</td>
-                                </tr>
-                                {% endfor %}
-                            </table>
-                       
-                        </div>
-                        <div class="row-mini5">
-                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Editar</a></button>
-                        </div>
-                    </div>
-                </div>         
-            </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 mb-2">
                 <div class="c2">
+                    <form id="lista">
                     <div class="titulos-tarjetas">
                         <h4>Listado de Productos</h4>
                     </div>
@@ -86,7 +32,8 @@
                     <div class="datagrid">
                         <table class="table table-striped table-hover table-responsive-sm">
                             <tr>
-                                <th>ID</th>
+                                <th></th>
+                                <th data-field="id">ID</th>
                                 <th>Nombre</th>
                                 <th>Precio</th> 
                                 <th>Descripción </th> 
@@ -98,6 +45,10 @@
 
                             {% for i in productos %}
                             <tr>
+                                <td class="bs-checkbox " style="width: 36px; "><label>
+                                    <input data-index="{{ i.id_producto | title }}" name="id" type="radio" value="{{ i.id_producto | title }}">
+                                    <span></span>
+                                    </label></td>
                                 <td>{{ i.id_producto | title }}</td>
                                 <td>{{ i.nombre_producto | title }}</td>
                                 <td>{{ i.precio_producto | intcomma }}</td>
@@ -112,27 +63,30 @@
                     </div>
                     <div class="botones">
                         <div class="row-mini5">
-                            <a href="#button" class="btn btn-primary">Añadir</a>
+                            <a class="btn btn-primary" onclick="$('#modalcrear').modal('show');">Añadir</a>
                         </div>
                         <div class="row-mini5">
-                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Editar</a></button>
+                            <button class="btn btn-primary" onclick="$('#tipo').val('1')">Editar</a></button>
                         </div>
                         <div class="row-mini5">
-                            <button type="submit" class="btn btn-primary"><a href="Productos.html">Eliminar</a></button>
+                            <button class="btn btn-primary"><a onclick="$('#tipo').val('0')">Eliminar</a></button>
                         </div>
                     </div>
+                </form>
+                <input type="text" class="d-none" id="tipo">
                 </div>         
             </div>
 
-            <div class="col-4">
+            <div class="col-12 col-md-6 mb-2">
                 <div class="c3">
                     <div class="titulos-tarjetas">
                         <h4>Listado de Pedidos</h4>
                     </div>
                     <div>
                         <div class="datagrid">
-                            <table class="table table-striped table-hover table-responsive-sm">
+                            <table class="table table-striped table-hover table-responsive-sm" data-id-field="id" data-select-item-name="id">
                                 <tr>
+                                    <th></th>
                                     <th>ID</th>
                                     <th>Cantidad Producto</th>
                                     <th>Monto Total</th> 
@@ -146,6 +100,10 @@
     
                                 {% for j in productos %}
                                 <tr>
+                                    <td class="bs-checkbox " style="width: 36px; "><label>
+                                    <input data-index="{{ j.id_compra | title }}" name="id" type="radio" value="0">
+                                    <span></span>
+                                    </label></td>
                                     <td>{{ j.id_compra | title }}</td>
                                     <td>{{ j.cant_prod | title }}</td>
                                     <td>{{ j.monto_total | intcomma }}</td>
@@ -171,27 +129,68 @@
             </div>
         </div>
      
-                    <div class="container-all" id="button">
-                        <div class="popup">
-                            <div class="img1"></div>
-                                <div class="container-text">
-                                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
-                                    <form action="" method="post" enctype="multipart/form-data">
-                                        <div class="contenedor-inputs">
-                                            {% csrf_token %}
-                                            {{ form | crispy }}
-                                        
-                                        </div>
-                                        <input type="submit" class="btn btn-primary"  value="Guardar">  
-                                    </form>  
-                                    {{mensaje}}
-                                </div> 
-                            </div> 
-                        </div>
-                    </div>
+<div class="modal" tabindex="-1" id="modaleditar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modificar {{form.nombre_producto.value}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="../../Modificar-producto/{{productoid}}/" enctype="multipart/form-data">
+       <div class="modal-body">
+        {% csrf_token %}
+        {{ form | crispy }}
+       </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+      </form> 
+    </div>
+  </div>
+</div>
 
-        <div class="row cuerpo1">
-            
-        </div>
+<div class="modal" tabindex="-1" id="modalcrear">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crear Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="../../categorias/InicioVendedor/" enctype="multipart/form-data">
+       <div class="modal-body">
+        {% csrf_token %}
+        {{ form | crispy }}
+       </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+      </form> 
+    </div>
+  </div>
+</div>
+          
+
+        <script type="text/javascript">
+            $(function () {
+                $("#tipo").change( function() {
+                    $('#lista').submit();
+                });
+                {% if form.nombre_producto.value %}
+                $('#modaleditar').modal('show');
+                {% endif %}
+                $('#lista').submit(function (tipo) {
+                    if ($("#tipo").val() == "1") {
+                        window.location.replace("../../../categorias/Editar-producto/" + $(this).serializeArray()[0]["value"] + "/");
+                    } else {
+                        window.location.replace("../../../categorias/Eliminar-producto/" + $(this).serializeArray()[0]["value"] + "/");
+                    }
+                  return false;
+                });
+            });
+        </script>
 
         {% endblock %}
