@@ -4,18 +4,19 @@
 
 {% if form.errors %}
 
-<p>Your username and password didn´t match. Please try again.</p>
+<p>Su nombre de usuario y contraseña no coinciden. Inténtalo de nuevo..</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Your account doesn´t have access to this page. To proceed, please login with an account that has access.<p>
+    <p>
+      Su cuenta no tiene acceso a esta página. Para continuar, inicie sesión con una cuenta que tenga acceso.<p>
     {% else %}
-    <p>Please login to see this page.<p>
+    <p>Inicie sesión para ver esta página.<p>
     {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="{% url 'login' %}" class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
 {% csrf_token %}
 
 <div>
@@ -28,13 +29,12 @@
 </div>
 
 <div>
-  <input type="submit" value="login" />
+  <input type="submit" value="Iniciar Sesión" />
   <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost Password?</a></p>
+<p><a href="{% url 'password_reset' %}" class="row h-100 justify-content-center align-items-center">¿Olvidaste la contraseña?</a></p>
 
 {% endblock %}
-

@@ -10,7 +10,7 @@
           </div>
           <h5>Inicia sesión</h5> 
         </div>
-      <button type="submit" class="btn btn-register my-4 mx-md-auto my-md-0"><li><a href="{% url 'Registrarse' %}">Regístrate</a></li></button>
+      <button type="submit" class="btn btn-register my-4 mx-md-auto my-md-0"><a href="{% url 'Registrarse' %}">Regístrate</a></button>
   </div>
 </div>
 {% endblock%}
@@ -29,13 +29,9 @@
          
         <img class="logoini" src="{% static 'img/logoantojo.png' %}" alt="logo">
         <h5><b>Inicia sesión</b></h5>
-        <form action="#">
-          <div class="contenedor-inputs">
-            <p class="nom">Usuario:<input  type="text" name="nombre" size="18" required></p>
-            <p class="pass">Contraseña: <input type="password" name="contraseña" size="18" required></p>
-          </div>
+        <form action="{% url 'login' %}">
+          <input type="submit" class="btn-submit" value="Iniciar Sesión">
       
-          <input type="submit" class="btn-submit" value="Enviar">
         </form>
         <a href="javascript:cerrar()" id="cerrar" class="btn-cerrar-popup">X</a>
       </div>

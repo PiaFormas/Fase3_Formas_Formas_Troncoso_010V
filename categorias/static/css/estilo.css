@@ -417,15 +417,6 @@
 
 /*Bloque 1-Datos registro*/
 
-.c1
-{
-    padding-top:15px;
-    background-color:rgb(248, 226, 177);
-    border-radius: 5px;
-    text-align: center;
-    margin-left:100px;
-    margin-left:20px;
-}
 
 .row-mini1
 {
@@ -451,7 +442,7 @@
     /*background-image: url(img/cuadrado2.jpg);*/
     border-radius: 5px;
     text-align: center;
-    background-color: rgb(155, 221, 180);
+    background-color: rgb(165, 191, 212);
     height: 100%;
 }
 
@@ -746,7 +737,7 @@ popup form .btn-submit:hover {
 {
     padding-top:15px;
     padding-bottom:15px;
-    background-color: rgb(255, 180, 184);
+    background-color: rgb(154, 184, 201);
     border-radius: 5px;
     text-align: center;
     height: 100%;

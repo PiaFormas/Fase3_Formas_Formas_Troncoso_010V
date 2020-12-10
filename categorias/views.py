@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate
+from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import CompradorForm, VendedorForm,ProductoForm
 from . models import Producto, Vendedor, DetalleCompra, Comprador
+
 
 
 # Create your views here.
@@ -12,8 +14,9 @@ def index(request):
         'index.html',)
 
 def InicioAdmin(request):
+    #queryset = request.GET.get("busqueda")
     vendedores = Vendedor.objects.all()
-    pedidos= DetalleCompra.objects.all()
+    pedidos= DetalleCompra.objects.all().order_by('id_compra')
     comprador= Comprador.objects.all()
     productos=Producto.objects.all()
 
