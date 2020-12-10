@@ -15,4 +15,4 @@ class VendedorForm(forms.ModelForm):
 class ProductoForm(forms.ModelForm):
     class Meta:
         model= Producto
-        fields=["nombre_producto","unidad_medida","precio_producto","categoria","descripcion_producto","imagen"]    
+        fields=["nombre_producto","unidad_medida","precio_producto","categoria","descripcion_producto","imagen","vendedor"]    

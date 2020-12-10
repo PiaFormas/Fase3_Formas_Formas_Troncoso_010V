@@ -14,9 +14,10 @@ urlpatterns = [
     path('Modificar-producto/<id>/',ModificarProductos,name="ModificarProducto"),
     path('Editar-producto/<id>/',EditarProductos,name="EditarProductos"),
     path('Eliminar-producto/<id>/',EliminarProductos,name="EliminarProductos"),
-
-
-    
+    path('InicioAdmin/',InicioAdmin,name="InicioAdmin"),
+    path('Eliminar-vendedor/<id>/',EliminarVendedor,name="EliminarVendedor"),
+    path('Eliminar-comprador/<id>/',EliminarComprador,name="EliminarComprador"),
+    path('Eliminar-producto2/<id>/',EliminarProductos2,name="EliminarProductos2"),
     
     
 

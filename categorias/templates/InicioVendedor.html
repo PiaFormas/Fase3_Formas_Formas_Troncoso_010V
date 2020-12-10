@@ -44,6 +44,7 @@
                            
 
                             {% for i in productos %}
+                          
                             <tr>
                                 <td class="bs-checkbox " style="width: 36px; "><label>
                                     <input data-index="{{ i.id_producto | title }}" name="id" type="radio" value="{{ i.id_producto | title }}">
@@ -91,17 +92,17 @@
                                     <th>Cantidad Producto</th>
                                     <th>Monto Total</th> 
                                     <th>Hora </th> 
-                                    <th>comprador</th>  
+                                    <th>Comprador</th>  
                                     <th>Producto</th>
                                     
 
                                 </tr>
                                
     
-                                {% for j in productos %}
+                                {% for j in pedidos %}
                                 <tr>
                                     <td class="bs-checkbox " style="width: 36px; "><label>
-                                    <input data-index="{{ j.id_compra | title }}" name="id" type="radio" value="0">
+                                    <input data-index="{{ j.id_compra | title }}" name="id" type="radio" value="{{ j.id_compra | title }}">
                                     <span></span>
                                     </label></td>
                                     <td>{{ j.id_compra | title }}</td>
@@ -160,7 +161,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="../../categorias/InicioVendedor/" enctype="multipart/form-data">
+      <form method="post" action="../../InicioVendedor/" enctype="multipart/form-data">
        <div class="modal-body">
         {% csrf_token %}
         {{ form | crispy }}
@@ -184,9 +185,9 @@
                 {% endif %}
                 $('#lista').submit(function (tipo) {
                     if ($("#tipo").val() == "1") {
-                        window.location.replace("../../../categorias/Editar-producto/" + $(this).serializeArray()[0]["value"] + "/");
+                        window.location.replace("../../../Editar-producto/" + $(this).serializeArray()[0]["value"] + "/");
                     } else {
-                        window.location.replace("../../../categorias/Eliminar-producto/" + $(this).serializeArray()[0]["value"] + "/");
+                        window.location.replace("../../../Eliminar-producto/" + $(this).serializeArray()[0]["value"] + "/");
                     }
                   return false;
                 });

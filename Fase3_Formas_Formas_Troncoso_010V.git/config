@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/PiaFormas/Fase3_Formas_Formas_Troncoso_010V.git
+	fetch = +refs/*:refs/*
+	mirror = true

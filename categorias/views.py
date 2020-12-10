@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import CompradorForm, VendedorForm,ProductoForm
-from . models import Producto, Vendedor, DetalleCompra
+from . models import Producto, Vendedor, DetalleCompra, Comprador
 
 
 # Create your views here.
@@ -10,9 +10,22 @@ def index(request):
     return render(
         request,
         'index.html',)
+
+def InicioAdmin(request):
+    vendedores = Vendedor.objects.all()
+    pedidos= DetalleCompra.objects.all()
+    comprador= Comprador.objects.all()
+    productos=Producto.objects.all()
+
+
+    return render(request, 'InicioAdmin.html',{'vendedores': vendedores, 'pedidos': pedidos, 'comprador': comprador, 'productos':productos})
+   
+
 def InicioVendedor(request):
    
     productos = Producto.objects.all()
+    #vendedor= Vendedor.objects.values_list('nombre_vendedor')
+    pedidos= DetalleCompra.objects.all()
 
     if request.method == 'POST':
         formulario= ProductoForm(data=request.POST, files=request.FILES)
@@ -21,7 +34,7 @@ def InicioVendedor(request):
            #data["mensaje"] = "Producto guardado correctamente"
     formulario=ProductoForm()
     return render(
-        request,'InicioVendedor.html', {'form':formulario,'productos':productos})
+        request,'InicioVendedor.html', {'form':formulario,'productos':productos, 'pedidos': pedidos})
    
 
 def Productos(request):
@@ -68,13 +81,8 @@ def RegistrarseVendedor(request):
         'RegistrarseVendedor.html', data)
 
 
-#def ListarVendedores(request):
-    #vendedores = Vendedor.objects.all()
 
-    #data= {
-       # 'vendedores': vendedores
-    #}
-   # return render(request, 'InicioVendedor.html', data)
+    
 
 
 
@@ -105,9 +113,28 @@ def ModificarProductos(request, **kwargs):
 def EliminarProductos(request, **kwargs):
     producto = Producto.objects.get(id_producto=kwargs.get('id'))
     producto.delete()
-    
     return redirect(to="InicioVendedor")
     
+def EliminarProductos2(request, id):
+    producto = Producto.objects.get(id_producto=id)
+    producto.delete()
+    # return HttpResponseRedirect('../../../InicioAdmin/')
+    return redirect(to="InicioAdmin")
+
+
+def EliminarVendedor(request, **kwargs):
+    vendedor = Vendedor.objects.get(id_vendedor=kwargs.get('id'))
+    vendedor.delete()
+    
+    # return HttpResponse("vendedor")
+    return redirect(to="InicioAdmin")
+
+def EliminarComprador(request, **kwargs):
+    comprador = Comprador.objects.get(id_comprador=kwargs.get('id'))
+    comprador.delete()
+    
+    # return HttpResponse("comprador")
+    return redirect(to="InicioAdmin")   
     #producto = get_object_or_404(Producto, id_producto=id)
 
     #data = {
